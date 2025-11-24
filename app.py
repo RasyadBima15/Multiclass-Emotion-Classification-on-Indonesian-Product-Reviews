@@ -18,7 +18,7 @@ st.set_page_config(
 def home_page():
     """Halaman Profil Singkat Aplikasi."""
     st.title("🏠 Home")
-    st.subheader("Analisis Zero-Shot & Few-Shot Learning pada Model Generative AI vs Fine-Tuning BERT")
+    st.subheader("🧠 Multiclass Emotion Classifier for Indonesian E-Commerce Reviews")
 
     st.markdown("""
     ### 🎯 **Tujuan Aplikasi**
@@ -333,8 +333,12 @@ def main():
     # 2. Selectbox dengan Teks yang Lebih Baik
     selection = st.sidebar.selectbox("Pilih Halaman", menu)
 
+    st.sidebar.markdown(f'<div style= height:160px </div>', unsafe_allow_html=True)
+
     # Menambahkan sedikit pemisah visual sebelum footer
     st.sidebar.markdown("---")
+
+    st.sidebar.image("assets/Unhas.png")
 
     # 3. Copyright footer yang dipercantik
     st.sidebar.markdown(
