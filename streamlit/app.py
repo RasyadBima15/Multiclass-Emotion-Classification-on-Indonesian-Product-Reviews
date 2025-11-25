@@ -15,6 +15,7 @@ import numpy as np
 from google import genai
 from google.genai import types
 import os
+from html import escape
 
 model_path = "Rasyy/indobert_multiclass_emotion_classifier_for_indonesian_e_commerce_reviews"  # Pastikan path ini benar
 MAX_LENGTH = 256
@@ -739,7 +740,9 @@ def predict_multiple_page():
                     bg_color = COLOR_MAP.get(label, "#C0C0C0")
                     text_color = TEXT_COLOR_MAP.get(label, "black")
 
-                    # Format markdown agar lebih rapih & profesional
+                    # Escape konten agar tidak terbaca sebagai syntax markdown
+                    safe_response = escape(assistant_response_string).replace("\n", "<br>• ")
+
                     formatted_response = f"""
                     <div style="
                         background-color:{bg_color};
@@ -753,9 +756,11 @@ def predict_multiple_page():
                         border-left: 10px solid black;
                     ">
                         <h4 style="margin-top:0; font-weight:700;">📌 Insight AI - {label}</h4>
-                        {assistant_response_string.replace('**', '<b>').replace('* ', '<br>• ').replace('*', '')}
+                        <div style="margin-top:8px;">• {safe_response}</div>
                     </div>
                     """
+
+                    st.markdown(formatted_response, unsafe_allow_html=True)
 
                     st.markdown(formatted_response, unsafe_allow_html=True)
 
