@@ -82,13 +82,13 @@ def predict_emotion(text, tokenizer, model, max_length=MAX_LENGTH, label_map=LAB
 # --- Konfigurasi Aplikasi Streamlit ---
 st.set_page_config(
     layout="wide",
-    page_title="Multiclass Emotion Classifier for Indonesian E-Commerce Reviews"
+    page_title="Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia"
 )
 
 def home_page():
     """Halaman Profil Singkat Aplikasi."""
     st.title("🏠 Home")
-    st.subheader("🧠 Multiclass Emotion Classifier for Indonesian E-Commerce Reviews")
+    st.subheader("🧠 Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia")
 
     st.markdown("""
     ### 🎯 **Tujuan Aplikasi**
@@ -370,10 +370,38 @@ def model_analysis_page():
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss distilbert.png", caption="Loss & F1-Score per Epoch - DistilBERT")
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss mbert.png", caption="Loss & F1-Score per Epoch - mBERT")
 
+    # ===== BEST MODEL SUMMARY =====
+    st.markdown("---")
+    st.subheader("🏆 Best Model Summary")
+
+    st.markdown("""
+    #### **🔥 Model Terbaik: IndoBERT**
+    Berdasarkan perbandingan keseluruhan metrik efektivitas, **Model IndoBERT menjadi model terbaik** dengan hasil:
+    - **F1-Score: 0.75**
+    - **Akurasi: 0.75**
+
+    Disusul oleh **DistilBERT** pada peringkat kedua dengan hasil:
+    - **F1-Score: 0.72**
+    - **Akurasi: 0.72**
+
+    Meskipun berada di posisi kedua secara efektivitas, **DistilBERT unggul dalam aspek efisiensi** (latensi lebih rendah & throughput lebih tinggi). 
+    Namun, **selisih efisiensinya tidak terlalu jauh dibandingkan IndoBERT**, sehingga keduanya tetap kompetitif untuk penggunaan skala besar.
+
+    #### 🤖 Performa Model Generative AI
+    Model Generative AI menunjukkan performa yang jauh di bawah model Fine-Tuning BERT.
+    Model terbaik pada kelompok ini adalah:
+
+    - **GPT-5.1 (25-shot)**  
+      **F1-Score: 0.64**  
+      **Akurasi: 0.64**
+
+    Selisih performanya relatif besar dibanding model fine-tuning BERT, sehingga untuk kasus ini **metode fine-tuning jauh lebih unggul**.
+    """)
+
 def predict_single_page():
     """Halaman Prediksi Satu Teks."""
     st.title("📝 Prediksi Teks Tunggal")
-    st.markdown("Halaman ini memungkinkan prediksi emosi untuk satu ulasan secara langsung menggunakan **IndoBERT**.")
+    st.markdown("Halaman ini memungkinkan prediksi emosi untuk satu ulasan secara langsung menggunakan model terbaik berdasarkan hasil analisis, yakni **IndoBERT**.")
 
     # Cek apakah model berhasil dimuat
     if model is None:
@@ -448,25 +476,199 @@ def predict_single_page():
             st.warning("Mohon masukkan teks untuk melakukan prediksi.")
 
 def predict_multiple_page():
-    """Halaman Prediksi Banyak Teks."""
-    st.title("📄 Predict Multiple Text")
-    st.markdown("Halaman ini memungkinkan prediksi banyak ulasan sekaligus menggunakan file CSV.")
-    # Placeholder untuk konten prediksi banyak teks
-    st.info("Fitur ini sedang dalam pengembangan.")
+    st.title("📄 Prediksi Teks Massal")
+    st.markdown("Halaman ini memungkinkan prediksi banyak ulasan sekaligus menggunakan file CSV / Excel.")
+
+    COLOR_MAP = {
+        "Anger": "#DF2020",
+        "Fear": "#CBA3FF",
+        "Happy": "#FFD93D",
+        "Love": "#FF6EC7",
+        "Sad": "#6BCBFF"
+    }
+
+    # Panduan Penggunaan
+    with st.expander("📌 Cara Penggunaan"):
+        st.markdown("""
+        **Ikuti langkah-langkah berikut:**
+        1. Siapkan **File CSV / Excel**.
+        2. Pastikan file memiliki kolom **`Customer Review`**.
+        3. Upload file menggunakan komponen di bawah, lalu klik tombol prediksi.
+        """)
+
+    uploaded_file = st.file_uploader("📤 Upload File CSV / Excel", type=["csv", "xlsx"])
+
+    if uploaded_file is not None:
+        try:
+            if uploaded_file.name.endswith(".csv"):
+                df = pd.read_csv(uploaded_file)
+            else:
+                df = pd.read_excel(uploaded_file)
+        except:
+            st.error("❌ Gagal membaca file, pastikan format benar.")
+            return
+
+        if "Customer Review" not in df.columns:
+            st.error("❌ Kolom `Customer Review` tidak ditemukan.")
+            return
+
+        st.success("📁 File berhasil diupload!")
+
+        if st.button("🚀 Mulai Prediksi"):
+            st.info("⏳ Sedang memproses prediksi, mohon tunggu...")
+
+            # Loading progress bar
+            progress_bar = st.progress(0)
+            status_text = st.empty()
+
+            # Hitung waktu proses
+            start_time = time.time()
+            predictions = []
+            probabilities_list = []
+
+            total = len(df)
+
+            for i, text in enumerate(df["Customer Review"]):
+                label, proba = predict_emotion(text, tokenizer, model)
+                predictions.append(label)
+                probabilities_list.append(proba)
+
+                # update progress bar
+                progress_percent = int((i + 1) / total * 100)
+                progress_bar.progress(progress_percent)
+                status_text.text(f"Processing {i+1}/{total} ({progress_percent}%)")
+
+            df["Emotion"] = predictions
+
+            # selesai
+            status_text.text("✔ Selesai melakukan prediksi!")
+            progress_bar.empty()
+
+            st.divider()
+
+            end_time = time.time()
+            total_time = end_time - start_time
+            num_records = len(df)
+            latency = total_time / num_records
+            throughput = num_records / total_time
+            throughput_per_minute = throughput * 60
+
+            st.subheader("📊 Distribusi Label Emosi")
+
+            label_counts = df["Emotion"].value_counts()
+
+            if len(label_counts) > 0:
+                colors = [COLOR_MAP.get(label, "#C0C0C0") for label in label_counts.index]
+
+                fig, ax = plt.subplots()
+                ax.pie(label_counts.values, labels=label_counts.index,
+                    autopct="%1.1f%%", startangle=90, colors=colors)
+                ax.axis("equal")
+                st.pyplot(fig)
+            else:
+                st.info("Tidak ada data prediksi untuk ditampilkan.")
+
+            # ===== Latency & Throughput =====
+            st.subheader("⏱️ Performance Metrics")
+            col1, col2 = st.columns(2)
+            col1.metric("Latency (detik/sample)", f"{latency:.4f}")
+            col2.metric("Throughput (samples/menit)", f"{throughput_per_minute:.2f}")
+
+            st.divider()
+
+            # ===== Hasil Per Label =====
+            st.subheader("📦 Analisis Per Label")
+
+            labels = df["Emotion"].unique()
+
+            for label in labels:
+                st.subheader(f"## 🎯 Label: **{label}**")
+
+                # Ambil data untuk label ini
+                subset = df[df["Emotion"] == label]
+                text = " ".join(subset["Customer Review"].values).lower()
+
+                # --- WordCloud ---
+                st.markdown("### ☁ WordCloud")
+                if text.strip():
+                    wc_color = COLOR_MAP.get(label, "#000000")
+                    wc = WordCloud(width=600, height=400, background_color="white",
+                                colormap=None, color_func=lambda *args, **kwargs: wc_color).generate(text)
+
+                    fig, ax = plt.subplots(figsize=(7, 5))
+                    ax.imshow(wc, interpolation="bilinear")
+                    ax.axis("off")
+                    st.pyplot(fig)
+                else:
+                    st.info("Tidak ada data untuk wordcloud label ini.")
+
+                # --- Top 10 Kata ---
+                st.markdown("### 🔝 Top 10 Kata Paling Sering")
+
+                words = re.findall(r'\w+', text)
+                top_words = Counter(words).most_common(10)
+
+                if top_words:
+                    top_df = pd.DataFrame(top_words, columns=["Word", "Frequency"]).sort_values(by="Frequency", ascending=True)
+
+                    bar_color = COLOR_MAP.get(label, "#000000")
+
+                    fig, ax = plt.subplots(figsize=(8, 5))
+                    ax.barh(top_df["Word"], top_df["Frequency"], color=bar_color)
+                    ax.set_xlabel("Frequency")
+                    ax.set_ylabel("Word")
+                    ax.set_title(f"Top 10 Words - {label}")
+
+                    st.pyplot(fig)
+                else:
+                    st.info("Tidak ada kata yang dapat dianalisis.")
+
+                # --- Sample Data ---
+                st.markdown("### 📌 Contoh 3 Sample Data")
+                samples = subset.head(5)[["Customer Review", "Emotion"]]
+                if not samples.empty:
+                    st.dataframe(
+                        samples,
+                        use_container_width=True,
+                        column_config={
+                            "Customer Review": st.column_config.TextColumn(
+                                "Customer Review",
+                                width="large",
+                            ),
+                            "Emotion": st.column_config.TextColumn(
+                                "Emotion",
+                                width="small",
+                            )
+                        }
+                    )
+                else:
+                    st.info("Sample data tidak tersedia.")
+
+                st.markdown("---")  # Pemisah antar label
+
+            # ===== Download CSV =====
+            st.subheader("📥 Download Hasil Prediksi")
+            csv = df.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="Download CSV",
+                data=csv,
+                file_name="prediction_result.csv",
+                mime="text/csv"
+            )
 
 # --- Fungsi Utama Navigasi ---
 def main():
     """Mengatur Navigasi Sidebar."""
 
     # 1. Judul Sidebar yang Jelas
-    st.sidebar.title("🧠 Multiclass Emotion Classifier for Indonesian E-Commerce Reviews")
+    st.sidebar.title("🧠 Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia")
     # st.sidebar.subheader("Pilih Halaman") # Opsional, jika judul sudah cukup
 
     menu = [
         "🏠 Home",
         "📊 Hasil Analisis Model",
         "✍️ Prediksi Teks Tunggal",
-        "📁 Prediksi Teks Massal"
+        "📄 Prediksi Teks Massal"
     ]
 
     # 2. Selectbox dengan Teks yang Lebih Baik
@@ -496,7 +698,7 @@ def main():
         model_analysis_page()
     elif selection == "✍️ Prediksi Teks Tunggal":
         predict_single_page()
-    elif selection == "📁 Prediksi Teks Massal":
+    elif selection == "📄 Prediksi Teks Massal":
         predict_multiple_page()
 
 if __name__ == "__main__":
