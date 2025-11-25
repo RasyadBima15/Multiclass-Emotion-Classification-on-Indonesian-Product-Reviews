@@ -624,7 +624,7 @@ def predict_multiple_page():
                     st.info("Tidak ada kata yang dapat dianalisis.")
 
                 # --- Sample Data ---
-                st.markdown("### 📌 Contoh 3 Sample Data")
+                st.markdown("### 📌 Contoh 5 Sample Data")
                 samples = subset.head(5)[["Customer Review", "Emotion"]]
                 if not samples.empty:
                     st.dataframe(
