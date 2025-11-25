@@ -339,15 +339,15 @@ def model_analysis_page():
     st.divider()
 
     st.subheader("🏆 Model Ranking by Accuracy")
-    st.image("assets/model ranking by accuracy.png", caption="Model Ranking by Accuracy")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by accuracy.png", caption="Model Ranking by Accuracy")
     st.divider()
 
     st.subheader("⚡ Model Ranking by Latency")
-    st.image("assets/model ranking by latency.png", caption="Model Ranking by Latency")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by latency.png", caption="Model Ranking by Latency")
     st.divider()
 
     st.subheader("📦 Model Ranking by Throughput")
-    st.image("assets/model ranking by throughput.png", caption="Model Ranking by Throughput")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by throughput.png", caption="Model Ranking by Throughput")
     st.divider()
 
     st.divider()
@@ -357,7 +357,7 @@ def model_analysis_page():
     # ===========================
     st.subheader("⏱ Perbandingan Waktu Pelatihan Fine-Tuning BERT")
 
-    st.image("assets/time training.png", caption="Perbandingan waktu pelatihan per model")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/time training.png", caption="Perbandingan waktu pelatihan per model")
 
     st.divider()
 
@@ -366,10 +366,10 @@ def model_analysis_page():
     # =============================
     st.subheader("📉 Grafik Loss & F1-Score per Epoch Fine-Tuning BERT")
 
-    st.image("assets/loss indobert.png", caption="Loss & F1-Score per Epoch - IndoBERT")
-    st.image("assets/loss roberta.png", caption="Loss & F1-Score per Epoch - RoBERTa")
-    st.image("assets/loss distilbert.png", caption="Loss & F1-Score per Epoch - DistilBERT")
-    st.image("assets/loss mbert.png", caption="Loss & F1-Score per Epoch - mBERT")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss indobert.png", caption="Loss & F1-Score per Epoch - IndoBERT")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss roberta.png", caption="Loss & F1-Score per Epoch - RoBERTa")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss distilbert.png", caption="Loss & F1-Score per Epoch - DistilBERT")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss mbert.png", caption="Loss & F1-Score per Epoch - mBERT")
 
 def predict_single_page():
     """Halaman Prediksi Satu Teks."""
@@ -478,7 +478,7 @@ def main():
     # Menambahkan sedikit pemisah visual sebelum footer
     st.sidebar.markdown("---")
 
-    st.sidebar.image("assets/Unhas.png")
+    st.sidebar.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/Unhas.png")
 
     # 3. Copyright footer yang dipercantik
     st.sidebar.markdown(
