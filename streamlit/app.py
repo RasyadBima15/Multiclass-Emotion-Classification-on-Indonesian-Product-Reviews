@@ -348,7 +348,6 @@ def model_analysis_page():
 
     st.subheader("📦 Model Ranking by Throughput")
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by throughput.png", caption="Model Ranking by Throughput")
-    st.divider()
 
     st.divider()
 
