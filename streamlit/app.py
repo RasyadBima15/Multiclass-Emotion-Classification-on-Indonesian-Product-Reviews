@@ -8,6 +8,76 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import time
 import base64
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+import torch.nn.functional as F
+import numpy as np
+
+model_path = "Rasyy/indobert_multiclass_emotion_classifier_for_indonesian_e_commerce_reviews"  # Pastikan path ini benar
+MAX_LENGTH = 256
+LABEL_MAP = {
+    0: 'Anger',
+    1: 'Fear',
+    2: 'Happy',
+    3: 'Love',
+    4: 'Sad'
+}
+
+# --- Fungsi Memuat Model dan Tokenizer ---
+# Gunakan st.cache_resource agar model hanya dimuat sekali
+@st.cache_resource
+def load_model_and_tokenizer(path):
+    """Memuat tokenizer dan model IndoBERT dari folder yang ditentukan."""
+    try:
+        # Memuat Tokenizer
+        print("Memuat tokenizer...")
+        tokenizer = AutoTokenizer.from_pretrained(path)
+
+        # Memuat Model TFBertForSequenceClassification
+        print("Memuat model...")
+        # from_pt=True digunakan jika model di folder disimpan sebagai PyTorch
+        model = AutoModelForSequenceClassification.from_pretrained(
+            path
+        )
+
+        print("Model dan Tokenizer siap digunakan!")
+        return tokenizer, model
+    except Exception as e:
+        st.error(f"Gagal memuat model atau tokenizer dari {path}. Pastikan folder ada dan berisi file yang diperlukan. Error: {e}")
+        return None, None
+
+# --- Memuat Model Global ---
+tokenizer, model = load_model_and_tokenizer(model_path)
+
+# --- Fungsi Prediksi ---
+def predict_emotion(text, tokenizer, model, max_length=MAX_LENGTH, label_map=LABEL_MAP):
+    """Melakukan prediksi emosi pada satu teks menggunakan PyTorch model."""
+    if not model or not tokenizer:
+        return "Model belum dimuat.", None
+
+    # 1. Tokenisasi Input
+    inputs = tokenizer(
+        text,
+        max_length=max_length,
+        truncation=True,
+        padding='max_length',
+        return_tensors='pt'  # PyTorch tensor
+    )
+
+    # 2. Prediksi Model
+    with torch.no_grad():  # matikan gradient, lebih cepat
+        outputs = model(**inputs)
+        logits = outputs.logits  # shape: [1, num_classes]
+
+    # 3. Hitung Probabilitas dan Prediksi Kelas
+    probabilities = F.softmax(logits, dim=-1).squeeze().cpu().numpy()  # numpy array
+    predicted_class_id = torch.argmax(logits, dim=1).item()  # integer
+    predicted_label = label_map.get(predicted_class_id, "Unknown")
+
+    # Format probabilitas untuk ditampilkan per label
+    results = {label: float(prob) for label, prob in zip(label_map.values(), probabilities)}
+
+    return predicted_label, results
 
 # --- Konfigurasi Aplikasi Streamlit ---
 st.set_page_config(
@@ -18,7 +88,7 @@ st.set_page_config(
 def home_page():
     """Halaman Profil Singkat Aplikasi."""
     st.title("🏠 Home")
-    st.subheader("Analisis Zero-Shot & Few-Shot Learning pada Model Generative AI vs Fine-Tuning BERT")
+    st.subheader("🧠 Multiclass Emotion Classifier for Indonesian E-Commerce Reviews")
 
     st.markdown("""
     ### 🎯 **Tujuan Aplikasi**
@@ -303,10 +373,80 @@ def model_analysis_page():
 
 def predict_single_page():
     """Halaman Prediksi Satu Teks."""
-    st.title("📝 Predict Single Text")
-    st.markdown("Halaman ini memungkinkan prediksi emosi untuk satu ulasan secara langsung.")
-    # Placeholder untuk konten prediksi satu teks
-    st.info("Fitur ini sedang dalam pengembangan.")
+    st.title("📝 Prediksi Teks Tunggal")
+    st.markdown("Halaman ini memungkinkan prediksi emosi untuk satu ulasan secara langsung menggunakan **IndoBERT**.")
+
+    # Cek apakah model berhasil dimuat
+    if model is None:
+        st.error("Tidak dapat melanjutkan karena model gagal dimuat.")
+        return
+
+    # Area input teks
+    text_input = st.text_area(
+        "Masukkan teks ulasan yang ingin Anda prediksi emosinya:",
+        placeholder="Contoh: Saya sangat suka dengan produk ini!",
+        height=150
+    )
+
+    # Tombol Prediksi
+    if st.button("Prediksi Emosi"):
+        if text_input:
+            with st.spinner('Menganalisis emosi...'):
+                # Panggil fungsi prediksi
+                predicted_label, probabilities = predict_emotion(
+                    text_input, 
+                    tokenizer, 
+                    model
+                )
+            
+            # Tampilkan Hasil
+            st.success("✅ Prediksi Selesai!")
+            # Map warna berdasarkan emosi
+            COLOR_MAP = {
+                "Anger": "#FF6B6B",
+                "Fear": "#CBA3FF",
+                "Happy": "#FFD93D",
+                "Love": "#FF6EC7",
+                "Sad": "#6BCBFF"
+            }
+
+            # Ambil warna sesuai prediksi
+            color = COLOR_MAP.get(predicted_label, "#FFFFFF")  # default putih kalau label unknown
+
+            st.markdown(
+                f"**Emosi yang Diprediksi:** <span style='color:{color}; font-size:20px; font-weight:bold;'>{predicted_label}</span>",
+                unsafe_allow_html=True
+            )
+            
+            # Detail Probabilitas
+            st.subheader("📊 Detail Probabilitas")
+
+            # Warna gelap untuk progress bar di background terang
+            COLOR_MAP_DARK = {
+                "Anger": "#D23434",     # dark red
+                "Fear": "#8D2AD4",      # dark purple
+                "Happy": "#F1BD38",     # goldenrod
+                "Love": "#DC1694",      # medium violet red
+                "Sad": "#56ABFF"    # dodger blue
+            }
+
+            for label, prob in probabilities.items():
+                percent = prob * 100
+                bar_color = COLOR_MAP_DARK.get(label, "#2F4F4F")  # default dark slate gray jika label unknown
+
+                st.markdown(
+                    f"""
+                    <div style='margin-bottom:10px;'>
+                        <b>{label}</b>: {percent:.2f}%
+                        <div style='background: #E6E6E6; border-radius:5px; width:100%; height:20px;'>
+                            <div style='width:{percent}%; background:{bar_color}; height:100%; border-radius:5px;'></div>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+        else:
+            st.warning("Mohon masukkan teks untuk melakukan prediksi.")
 
 def predict_multiple_page():
     """Halaman Prediksi Banyak Teks."""
@@ -333,8 +473,12 @@ def main():
     # 2. Selectbox dengan Teks yang Lebih Baik
     selection = st.sidebar.selectbox("Pilih Halaman", menu)
 
+    st.sidebar.markdown(f'<div style= height:160px </div>', unsafe_allow_html=True)
+
     # Menambahkan sedikit pemisah visual sebelum footer
     st.sidebar.markdown("---")
+
+    st.sidebar.image("assets/Unhas.png")
 
     # 3. Copyright footer yang dipercantik
     st.sidebar.markdown(
