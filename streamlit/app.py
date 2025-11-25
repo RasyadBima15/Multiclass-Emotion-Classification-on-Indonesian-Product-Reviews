@@ -28,7 +28,7 @@ LABEL_MAP = {
 
 try:
     # Inisialisasi Klien Gemini
-    client = genai.Client(api_key=st.secrets["API_KEY"])
+    client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
     model_name = "gemini-2.5-flash"
 
 except Exception as e:
@@ -143,7 +143,7 @@ def home_page():
     |-------|-----------|
     | **📊 Hasil Analisis Model** | Menampilkan perbandingan performa model berdasarkan metrik efisiensi & efektivitas |
     | **✍️ Prediksi Teks Tunggal** | Prediksi emosi untuk satu ulasan secara langsung |
-    | **📁 Prediksi Teks Massal** | Prediksi banyak ulasan sekaligus menggunakan file CSV |
+    | **📄 Prediksi Teks Massal** | Prediksi banyak ulasan sekaligus menggunakan file CSV |
 
     ### 🧪 **Model yang Dibandingkan**
     **Generative AI**
