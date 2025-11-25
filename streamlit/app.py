@@ -102,13 +102,13 @@ def predict_emotion(text, tokenizer, model, max_length=MAX_LENGTH, label_map=LAB
 # --- Konfigurasi Aplikasi Streamlit ---
 st.set_page_config(
     layout="wide",
-    page_title="Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia"
+    page_title="Klasifikasi Emosi Multikelas untuk Produk Ulasan E-Commerce Indonesia"
 )
 
 def home_page():
     """Halaman Profil Singkat Aplikasi."""
     st.title("🏠 Home")
-    st.subheader("🧠 Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia")
+    st.subheader("🧠 Klasifikasi Emosi Multikelas untuk Produk Ulasan E-Commerce Indonesia")
 
     st.markdown("""
     ### 🎯 **Tujuan Aplikasi**
@@ -777,7 +777,7 @@ def main():
     """Mengatur Navigasi Sidebar."""
 
     # 1. Judul Sidebar yang Jelas
-    st.sidebar.title("🧠 Klasifikasi Emosi Multikelas untuk Ulasan E-Commerce Indonesia")
+    st.sidebar.title("🧠 Klasifikasi Emosi Multikelas untuk Produk Ulasan E-Commerce Indonesia")
     # st.sidebar.subheader("Pilih Halaman") # Opsional, jika judul sudah cukup
 
     menu = [
