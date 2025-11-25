@@ -502,7 +502,7 @@ def predict_multiple_page():
     COLOR_MAP = {
         "Anger": "#DF2020",
         "Fear": "#CBA3FF",
-        "Happy": "#FFD93D",
+        "Happy": "#E0BE36",
         "Love": "#FF6EC7",
         "Sad": "#6BCBFF"
     }
