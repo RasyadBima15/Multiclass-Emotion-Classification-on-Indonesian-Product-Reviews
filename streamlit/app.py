@@ -12,6 +12,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import torch.nn.functional as F
 import numpy as np
+from google import genai
+from google.genai import types
+import os
 
 model_path = "Rasyy/indobert_multiclass_emotion_classifier_for_indonesian_e_commerce_reviews"  # Pastikan path ini benar
 MAX_LENGTH = 256
@@ -22,6 +25,23 @@ LABEL_MAP = {
     3: 'Love',
     4: 'Sad'
 }
+
+try:
+    # Inisialisasi Klien Gemini
+    client = genai.Client(api_key=st.secrets["API_KEY"])
+    model_name = "gemini-2.5-flash"
+
+except Exception as e:
+    print(f"❌ Gagal menginisialisasi Gemini Client. Periksa GEMINI_API_KEY: {e}")
+    client = None
+
+system_prompt = """
+Anda adalah analis AI untuk emosi konsumen dalam ulasan e-commerce Indonesia.
+Tugas Anda adalah memberikan ringkasan insight faktor penyebab munculnya emosi tersebut,
+berdasarkan data kata kunci dan contoh ulasan yang diberikan.
+Jawaban harus berbentuk poin-poin singkat, akurat, tidak mengada-ada,
+dan fokus pada konteks e-commerce Indonesia.
+"""
 
 # --- Fungsi Memuat Model dan Tokenizer ---
 # Gunakan st.cache_resource agar model hanya dimuat sekali
@@ -582,7 +602,7 @@ def predict_multiple_page():
             labels = df["Emotion"].unique()
 
             for label in labels:
-                st.subheader(f"## 🎯 Label: **{label}**")
+                st.subheader(f"🎯 Label: **{label}**")
 
                 # Ambil data untuk label ini
                 subset = df[df["Emotion"] == label]
@@ -645,6 +665,102 @@ def predict_multiple_page():
                     st.info("Sample data tidak tersedia.")
 
                 st.markdown("---")  # Pemisah antar label
+
+                # Ambil subset data sesuai label
+                subset = df[df["Emotion"] == label]
+
+                # Siapkan Top Words
+                words = re.findall(r'\w+', " ".join(subset["Customer Review"].values).lower())
+                top_words = Counter(words).most_common(10)
+                formatted_words = "\n".join([f"- {w}: {c}" for w, c in top_words])
+
+                # Siapkan contoh sample review
+                samples_list = subset["Customer Review"].head(5).tolist()
+                formatted_samples = "\n".join([f"- {s}" for s in samples_list])
+
+                user_prompt_template = """
+                    Analisis emosi: {label}
+
+                    Top 10 kata yang paling sering muncul:
+                    {top_words}
+
+                    Contoh ulasan pelanggan:
+                    {sample_reviews}
+
+                    Berikan insight utama mengenai penyebab munculnya emosi ini
+                    dalam konteks ulasan produk e-commerce Indonesia.
+
+                    Format jawaban:
+                    - Faktor penyebab utama:
+                    - Pola kata penting:
+                    - Situasi umum yang memicu emosi ini:
+                """
+
+                # Bangun USER PROMPT dinamis
+                user_prompt = user_prompt_template.format(
+                    label=label,
+                    top_words=formatted_words,
+                    sample_reviews=formatted_samples
+                )
+
+                # Siapkan struktur pesan
+                messages = [
+                    types.Content(role="user", parts=[types.Part(text=user_prompt)])
+                ]
+
+                config = types.GenerateContentConfig(
+                    system_instruction=system_prompt
+                )
+
+                # ==== Generate Insight menggunakan Gemini 2.5 Flash ====
+                try:
+                    with st.spinner("⏳ Gemini sedang menganalisis konteks berdasarkan kata dan sample review..."):  
+                        time.sleep(15)
+                        response = client.models.generate_content(
+                            model=model_name,
+                            contents=messages,
+                            config=config
+                        )
+
+                    assistant_response_string = response.text.strip()
+                    
+                    # Warna background sesuai label
+                    bg_color = COLOR_MAP.get(label, "#C0C0C0")
+
+                    # Tentukan warna teks dan background berdasarkan label
+                    TEXT_COLOR_MAP = {
+                        "Anger": "white",
+                        "Fear": "white",
+                        "Happy": "white",
+                        "Love": "white",
+                        "Sad": "white"
+                    }
+
+                    bg_color = COLOR_MAP.get(label, "#C0C0C0")
+                    text_color = TEXT_COLOR_MAP.get(label, "black")
+
+                    # Format markdown agar lebih rapih & profesional
+                    formatted_response = f"""
+                    <div style="
+                        background-color:{bg_color};
+                        padding:18px 22px;
+                        border-radius:14px;
+                        color:{text_color};
+                        font-size:16px;
+                        font-weight:400;
+                        line-height:1.6;
+                        margin-top:15px;
+                        border-left: 10px solid black;
+                    ">
+                        <h4 style="margin-top:0; font-weight:700;">📌 Insight AI - {label}</h4>
+                        {assistant_response_string.replace('**', '<b>').replace('* ', '<br>• ').replace('*', '')}
+                    </div>
+                    """
+
+                    st.markdown(formatted_response, unsafe_allow_html=True)
+
+                except Exception as e:
+                    st.error(f"❌ Gagal menghasilkan insight Gemini: {e}")
 
             # ===== Download CSV =====
             st.subheader("📥 Download Hasil Prediksi")
