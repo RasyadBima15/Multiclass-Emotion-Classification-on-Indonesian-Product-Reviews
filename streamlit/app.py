@@ -565,19 +565,16 @@ def predict_multiple_page():
 
             total = len(df)
 
-            for i, text in enumerate(df["Customer Review"]):
+            for i, (idx, text) in enumerate(df_valid["Customer Review"].items()):
                 label, proba = predict_emotion(text, tokenizer, model)
-                predictions.append(label)
-                probabilities_list.append(proba)
+                df_valid.at[idx, "Emotion"] = label
 
-                # update progress bar
                 progress_percent = int((i + 1) / total * 100)
                 progress_bar.progress(progress_percent)
                 status_text.text(f"Processing {i+1}/{total} ({progress_percent}%)")
 
             df["Emotion"] = None
-            df.loc[df_valid.index, "Emotion"] = predictions
-
+            df.loc[df_valid.index, "Emotion"] = df_valid["Emotion"]
 
             # selesai
             status_text.text("✔ Selesai melakukan prediksi!")
