@@ -546,6 +546,9 @@ def predict_multiple_page():
             ["nan", "None", "NaN", "NULL"], ""
         )
 
+        valid_mask = df["Customer Review"] != ""
+        df_valid = df[valid_mask].copy()
+
         st.success("📁 File berhasil diupload!")
 
         if st.button("🚀 Mulai Prediksi"):
@@ -563,10 +566,6 @@ def predict_multiple_page():
             total = len(df)
 
             for i, text in enumerate(df["Customer Review"]):
-                if not isinstance(text, str) or text == "":
-                    predictions.append("Invalid Text")
-                    probabilities_list.append(None)
-                    continue
                 label, proba = predict_emotion(text, tokenizer, model)
                 predictions.append(label)
                 probabilities_list.append(proba)
@@ -576,7 +575,9 @@ def predict_multiple_page():
                 progress_bar.progress(progress_percent)
                 status_text.text(f"Processing {i+1}/{total} ({progress_percent}%)")
 
-            df["Emotion"] = predictions
+            df["Emotion"] = None
+            df.loc[df_valid.index, "Emotion"] = predictions
+
 
             # selesai
             status_text.text("✔ Selesai melakukan prediksi!")
