@@ -74,6 +74,12 @@ def predict_emotion(text, tokenizer, model, max_length=MAX_LENGTH, label_map=LAB
     """Melakukan prediksi emosi pada satu teks menggunakan PyTorch model."""
     if not model or not tokenizer:
         return "Model belum dimuat.", None
+    
+    if not isinstance(text, str):
+        return "Invalid Text", None
+
+    if text.strip() == "":
+        return "Teks kosong", None
 
     # 1. Tokenisasi Input
     inputs = tokenizer(
@@ -531,6 +537,14 @@ def predict_multiple_page():
         if "Customer Review" not in df.columns:
             st.error("❌ Kolom `Customer Review` tidak ditemukan.")
             return
+        
+        df["Customer Review"] = df["Customer Review"].astype(str)
+        df["Customer Review"] = df["Customer Review"].str.strip()
+
+        # ganti nilai aneh jadi string kosong
+        df["Customer Review"] = df["Customer Review"].replace(
+            ["nan", "None", "NaN", "NULL"], ""
+        )
 
         st.success("📁 File berhasil diupload!")
 
@@ -549,6 +563,10 @@ def predict_multiple_page():
             total = len(df)
 
             for i, text in enumerate(df["Customer Review"]):
+                if not isinstance(text, str) or text == "":
+                    predictions.append("Invalid Text")
+                    probabilities_list.append(None)
+                    continue
                 label, proba = predict_emotion(text, tokenizer, model)
                 predictions.append(label)
                 probabilities_list.append(proba)
