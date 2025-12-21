@@ -589,9 +589,11 @@ def predict_multiple_page():
             throughput = num_records / total_time
             throughput_per_minute = throughput * 60
 
+            df_analysis = df[df["Emotion"].notna()].copy()
+
             st.subheader("📊 Distribusi Label Emosi")
 
-            label_counts = df["Emotion"].value_counts()
+            label_counts = df_analysis["Emotion"].value_counts()
 
             if len(label_counts) > 0:
                 colors = [COLOR_MAP.get(label, "#C0C0C0") for label in label_counts.index]
@@ -615,13 +617,13 @@ def predict_multiple_page():
             # ===== Hasil Per Label =====
             st.subheader("📦 Analisis Per Label")
 
-            labels = df["Emotion"].unique()
+            labels = df_analysis["Emotion"].unique()
 
             for label in labels:
                 st.subheader(f"🎯 Label: **{label}**")
 
                 # Ambil data untuk label ini
-                subset = df[df["Emotion"] == label]
+                subset = df_analysis[df_analysis["Emotion"] == label]
                 text = " ".join(subset["Customer Review"].values).lower()
 
                 # --- WordCloud ---
@@ -645,12 +647,12 @@ def predict_multiple_page():
                 top_words = Counter(words).most_common(10)
 
                 if top_words:
-                    top_df = pd.DataFrame(top_words, columns=["Word", "Frequency"]).sort_values(by="Frequency", ascending=True)
+                    top_df_analysis = pd.DataFrame(top_words, columns=["Word", "Frequency"]).sort_values(by="Frequency", ascending=True)
 
                     bar_color = COLOR_MAP.get(label, "#000000")
 
                     fig, ax = plt.subplots(figsize=(8, 5))
-                    ax.barh(top_df["Word"], top_df["Frequency"], color=bar_color)
+                    ax.barh(top_df_analysis["Word"], top_df_analysis["Frequency"], color=bar_color)
                     ax.set_xlabel("Frequency")
                     ax.set_ylabel("Word")
                     ax.set_title(f"Top 10 Words - {label}")
@@ -683,7 +685,7 @@ def predict_multiple_page():
                 st.markdown("---")  # Pemisah antar label
 
                 # Ambil subset data sesuai label
-                subset = df[df["Emotion"] == label]
+                subset = df_analysis[df_analysis["Emotion"] == label]
 
                 # Siapkan Top Words
                 words = re.findall(r'\w+', " ".join(subset["Customer Review"].values).lower())
@@ -780,7 +782,7 @@ def predict_multiple_page():
 
             # ===== Download CSV =====
             st.subheader("📥 Download Hasil Prediksi")
-            csv = df.to_csv(index=False).encode("utf-8")
+            csv = df_analysis.to_csv(index=False).encode("utf-8")
             st.download_button(
                 label="Download CSV",
                 data=csv,
