@@ -1,0 +1,226 @@
+text,actual,predicted,latency_sec,ram_gb,vram_gb,prompt_tokens,completion_tokens
+buahnya bagus... kurirnya ok sellernya juga ok,Happy,Happy,2.546233654022217,10.590255737304688,0.0,1998,7
+"Ada sedikit cacat, selainnya oke",Happy,Happy,1.4158663749694824,10.612560272216797,0.0,1993,7
+Jadi semangat mancing.,Happy,Happy,1.3588366508483887,10.573318481445312,0.0,1991,7
+Cepat tiba n kemasan bagus. barangnya juga bagus,Happy,Happy,0.7035055160522461,10.577327728271484,0.0,1997,7
+Produk sesuai deskripsi??. Variasi produk beragam. Berfungsi dengan baik.,Happy,Happy,0.8159868717193604,10.558097839355469,0.0,2001,7
+pelayanan memuaskan dan barang sesuai ??,Happy,Love,1.2070229053497314,10.496776580810547,0.0,1994,7
+"Barang bagus dan cepat sekali sampainya ke cianjur, hanya 2 hari.Best seller",Happy,Happy,0.6860036849975586,10.430625915527344,0.0,2004,7
+Bagus mantab jernih,Happy,Happy,1.3455262184143066,10.420246124267578,0.0,1992,7
+"trmksh barang sesuai pesanan, fungsi normal... tingkatkan terus pelayanan...",Happy,Happy,0.7331974506378174,10.463661193847656,0.0,2000,7
+"Green screen sudah nyampe, bahan cukup tebal, mirip ntah sama dengan Positiveie bag yg bagus, warna hijau cerah, oke lah buat green screen",Happy,Happy,0.7238903045654297,10.438343048095703,0.0,2019,7
+"lumayan lah, buat pemanasan",Happy,Sadness,2.130495548248291,10.432144165039062,0.0,1992,8
+"paking rapih, kondisi barang datang mantap. kualitas sesuai harga.. joss",Happy,Happy,0.6762292385101318,10.432464599609375,0.0,2002,7
+"produk asli original. suplemen bagus tanpa efek samping, semoga segera berproses utk menambah pigmen rambut. tks",Happy,Love,0.7346701622009277,10.440311431884766,0.0,2013,7
+barang bagus dan layanan bagus,Happy,Happy,0.642160177230835,10.565349578857422,0.0,1990,7
+"untuk harga sgitu bolehlah, dan penjual juga menjelaskan cara pakai dengan jelas dan teliti",Happy,Happy,0.6983327865600586,10.540878295898438,0.0,2007,7
+"Cepet nyampe, seller oke",Happy,Happy,0.6069231033325195,10.404800415039062,0.0,1992,7
+barang sdh nyampe dgn baik. senang banget terima paketnya. semoga sapunya awet. terima kasih. bersih bersih rumah. bersih rapi. bebas debu.,Happy,Happy,0.6006648540496826,10.403751373291016,0.0,2027,7
+"Kainnya gk tipis, standar tebal batik biasa, adem , lembut, variant yg dikirim penjual , sesuai.",Happy,Happy,0.6968300342559814,10.38616943359375,0.0,2013,7
+"Barusan saya tes untuk ambil sampah di sungai dekat rumah, untuk kekuatan daya cekram si alatnya masuk akal untuk harga segini. untuk ambil plastik mudah, tapi untuk ambil sampah kain atau sampah yg udah kekubur agak sulit karena kurang kuat cekramannya",Happy,Sadness,1.2544784545898438,10.32470703125,0.0,2047,8
+"alhamdulillah, produk ini sangat membantu. yang biasanya membersihkan wc pakai sikat, berisik, kerak tertinggal pada sikat, kelihatan kotor. sekarang tergantikan dengan cooger sikat toilet ini. bahan karetnya membantu saya membersihkan wc disegala waktu, tidak lagi membangunkan anak saya yang masih bayi karena berisik bunyi sikat saat membersihkan toilet / ember mandi. bahkan bisa membersihkan disela-sela bagian dalam dudukan wc (yang tidak bisa dijangkau sikat toilet konvensional). sedikit tips untuk menempelkan ke dinding keramik kamar mandi. setelah dibersihkan dengan lap kering/tisu kering, bisa ditambahkan hair dryer/korek api dibagian yang akan ditempel perekatnya. cara menempelkannya seperti memasang pelindung kaca layar hp. dikeluarkan bagian udara didalamnya dengan cara menempelkan bagian atas/bagian bawah (tergantung mana duluan). gosok2 pakai jari/kuku udara didalamnya sampai tidak ada udara didalam perekatnya.. cooger emang sesuai sama slogannya. rekomended jelas.",Happy,Happy,0.6032111644744873,10.243110656738281,0.0,2222,7
+"sesuai dengan pesanan, bahan halus, kayaknya adem...",Happy,Love,0.8815951347351074,10.261383056640625,0.0,1999,7
+"sudah terima packingnya rapi, bahannya lembut, enak dipake, kurir yg selalu ramah, mkshPotongannya rapi.",Happy,Love,0.7064735889434814,10.259868621826172,0.0,2018,7
+Barang Sesuai Deskripsi. Produk Original. Packaging Bagus.,Happy,Love,0.6293380260467529,10.266239166259766,0.0,1998,7
+"mantap, bagus dan teba",Happy,Happy,0.7435178756713867,10.250789642333984,0.0,1992,7
+Sesuai deskripsi dan pesanan. Terimakasih,Happy,Happy,0.6192119121551514,10.357845306396484,0.0,1998,7
+"Produk Sesuai. Material Produk Bagus. Cocok untuk di jadikan tmpt penyimpanan masker.. Jadi lbh rapi dan enak di lihat, gampang untuk mengambil masker..",Happy,Happy,1.2172725200653076,10.382862091064453,0.0,2024,7
+"wae keren. alatnya berasa jadi pengrajin rokok. matap seler ramah pros�s cepat , pengiriman juga cepat.",Happy,Happy,0.6598718166351318,10.351661682128906,0.0,2014,7
+Bagus dan ini order saya yang kedua.,Happy,Love,0.7283022403717041,10.293159484863281,0.0,1993,7
+Teksturnya creamy. Gampang dipakai. Packaging aman ??.,Happy,Happy,0.6332623958587646,10.31503677368164,0.0,1999,7
+"masker bagus,sesuai harga`",Happy,Happy,0.6404533386230469,10.323371887207031,0.0,1993,7
+bagus banget bahan nya juga adem ini bakal jadi langganan saya order baju tidur untuk suami ????,Happy,Love,0.7452123165130615,10.346858978271484,0.0,2007,7
+respon baik mutu lumayan hrg terjangkau,Happy,Happy,0.7091131210327148,10.341537475585938,0.0,1996,7
+Kualitas Produk Bagus. Produk Sesuai,Happy,Love,0.985774040222168,10.356426239013672,0.0,1995,7
+"Bahan bagus, kain bisa melebar dan elastis",Happy,Happy,0.6819024085998535,10.307804107666016,0.0,1996,7
+"Cepat, rapih dan aman. Saya mau beli lagi nanti ya",Happy,Happy,0.6404500007629395,10.302051544189453,0.0,1999,7
+Cepat dan packing amanah bgt.kualitas susu sdh terjamin enak dan bermanfaat.thanks.,Happy,Love,0.7260193824768066,10.29813003540039,0.0,2008,7
+barang telah sampai dengan packaging yg bagus,Happy,Happy,0.6277391910552979,10.308982849121094,0.0,1992,7
+ukurannya ada yg besar ada yg kecil tapi lumayan dengan harga segitu makasih ya??,Happy,Happy,0.6299054622650146,10.302986145019531,0.0,2005,7
+"bagus, bisa nempel di kayu",Happy,Happy,0.7325108051300049,10.287845611572266,0.0,1994,7
+"alhamdulillah barang sampai di tgl 6/11. Isi dusnya : instruction manual book, kartu garansi, stiker boya, tas kecil boya, seperangkat mic, batereinya & jack adaptor (kayaknya untuk koneksi ke amplifier).",Happy,Happy,0.7299013137817383,10.27219009399414,0.0,2038,7
+Jahitannya rapi. Warnanya cantik ??. Bahannya lembut. Ukuran sesuai. Nyaman dipakai ?. Modelnya cantik ??. Bahannya adem.,Happy,Love,0.6096200942993164,10.269031524658203,0.0,2020,7
+Mantap keren. Cuma harus colok listrik kalau mau pakai fitur always-on. Kalau pake batre (AAA 3biji) harus dipencet dulu baru nyala,Happy,Happy,0.7818551063537598,10.269660949707031,0.0,2022,7
+Pertama x custom dan hasil ny sesuai request,Happy,Love,0.7258834838867188,10.268623352050781,0.0,1994,7
+mantap paten joss,Happy,Happy,0.8260364532470703,10.268165588378906,0.0,1991,7
+packing rapih aman makasih,Happy,Love,0.7081305980682373,10.212501525878906,0.0,1992,7
+warnanya ga sesuai photo di deskripsi warna sepatu di deskripsi aga' crem yang dateng abu2x gelap,Sadness,Sadness,0.8465261459350586,10.20965576171875,0.0,2010,8
+Ada 1 shade yg salah kirim,Sadness,Sadness,2.232835531234741,10.208671569824219,0.0,1993,8
+barang biasa aja ...bahan kurang bgitu bagus,Sadness,Sadness,0.665172815322876,10.231315612792969,0.0,1995,8
+Jahitannya berantakan banget. gak kenceng aku benyeng dikit udah pada copot jahitannya...sedih,Sadness,Sadness,0.6304707527160645,10.236785888671875,0.0,2014,8
+"bahan ny sih bagus, cm sayang pesen nya 2 datang ny 1. d chat ke seller ny jg d d baca, boro-boro ada penjelasan. seller g asiiiik g bs d ajak komunikasi",Sadness,Sadness,0.6146233081817627,10.231182098388672,0.0,2036,8
+"Packingnya cm kresek krg aman, jd pas dateng peot pdhl buat d jual, haduhh..",Sadness,Sadness,0.6449112892150879,10.200294494628906,0.0,2010,8
+"Kecewa dengan waktu pengiriman. Order jam 11.52 sengaja pilih sameday biar hari itu juga sampainya karena butuh cepat gendongan ini. Malah dikirim hari berikutnya. Kalau tidak bisa kirim di hari yang sama, tidak perlu diaktifkan pilihan kurir samedaynya. Atau infokan, untuk sameday itu maksimal order jam berapa baru bisa dikirim di hari yang sama.",Sadness,Sadness,0.6286027431488037,10.22650146484375,0.0,2072,8
+"Dlm ordernya sdh sy tambah 'bubble wrap' (+ rp 10.000), tp dikirimnya tanpa bubble. Lagian ordernya pagi2 n minta spy dikirimnya lbh cepat (instant), ternyata tibanya jam 16an",Sadness,Sadness,0.7353777885437012,10.227344512939453,0.0,2037,8
+"bungkusan barang robek, ada bagian kertas yg sudah kuning menandakan barang sudah lama terbuka. sangat mengecewakan",Sadness,Sadness,0.6343238353729248,10.21969985961914,0.0,2014,8
+balonnya kecil sekali ga sesuai gambar..ga bagus kualitas..ketipu dr gambar nya..kecewa,Sadness,Sadness,0.8389451503753662,10.242656707763672,0.0,2007,8
+Batre tidak sesuai ukuran dan tidak ada nano receiver.,Sadness,Sadness,0.6192152500152588,10.202396392822266,0.0,1995,8
+"overpriced.. analisanya kurang dalam. kualitas hard cover kurang bagus, .masa begitu sampe lgsg penyok",Sadness,Sadness,0.6873135566711426,10.230850219726562,0.0,2008,8
+boros batre,Sadness,Sadness,0.6777193546295166,10.209957122802734,0.0,1989,8
+yg micro ini sering rusak coba di tingkatkn lg kualitasnya,Sadness,Sadness,0.6329219341278076,10.209785461425781,0.0,1998,8
+sambungannya tidak rapih..,Sadness,Sadness,0.7316806316375732,10.208744049072266,0.0,1993,8
+"Barang sampai dengan selamat, mic berfungsi tapi emang kualitasnya tidak sampai bisa meredam suara di sekitar",Sadness,Sadness,0.6479365825653076,10.250511169433594,0.0,2008,8
+kurang bagus,Sadness,Sadness,0.72715163230896,10.264457702636719,0.0,1988,8
+model lumayan kren tapi kecewa di batre senternya hnya bertahan skitar 3 jam aja.,Sadness,Sadness,0.8328540325164795,10.262718200683594,0.0,2008,8
+tidak berfugsi,Sadness,Sadness,0.863640308380127,10.25326919555664,0.0,1991,8
+Baru seminggu pemakaian sudah tidak bisa nyala sebelah,Sadness,Sadness,0.5908379554748535,10.255695343017578,0.0,2000,8
+"Barang gak berfungsi, kalo mau dikirim cek dulu bos senter gak hidup udah di cas seharian, packing juga tidak bagus jadi bungkusnya ada yg pecah",Sadness,Sadness,0.6434385776519775,10.252204895019531,0.0,2022,8
+barang dikrm beda dgn yg pesan,Sadness,Sadness,0.8186049461364746,10.205135345458984,0.0,1993,8
+"Beli 3 barang, hanya dikirim 2. Saat komplain dijanjikan barang akan dikirim yg kurangnya. Ternyata dikembalikan uang. Sangat mengecewakan. Sepertinya tidak mau rugi bayar ongkir lagi,jd barang tdk dikirim.",Sadness,Sadness,0.5859348773956299,10.003524780273438,0.0,2045,8
+"Barang yang sampai cacat, tidak ngisi baterai stick nya",Sadness,Sadness,1.3563742637634277,10.036922454833984,0.0,1998,8
+Sangat kecewa dengan barang yg di terima segel Samsung sudah terbuka katanya dari sananya di dlm plasti segel ada kartu byu sudah di buka segel pelaatiknya yg makin parah layar banyak sidik jari tertinggal baru buka curiga curang tokonya barang mukin di tukar2 sama yg kw seperti Kepala carger kabel dll hati2 di toko ini harus lebih waspada dan di tanya detail kedua penjelasan juga gak bisa selalu bilang gak tau Kaka dari sana dari sana kalo dari Samsung asli sesuai pembicaraan buat apa Samsung buat segel bahkan ada tulisan jangan terima segel rusak kurang baik pokonya toko ini ngerasa barang bekas,Sadness,Sadness,0.6673386096954346,10.012699127197266,0.0,2130,8
+Paking tidak rapih jebol,Sadness,Sadness,0.6260225772857666,10.016334533691406,0.0,1992,8
+Ada kekecewaan ketika lihat brg datang.....Aq pikir barang beda dgn Fishing pen yg ada dipasaran tp ternyata sma saja mlah ini meragukan ketahanannya.......lihat fto komentar smua typenya sma tp yg dikirim ke Aq mlah beda.,Sadness,Sadness,0.6552836894989014,10.032268524169922,0.0,2042,8
+"kecewa dengan pelayanan toko ini, Dan nyesal denga toko ini, paket lama datang, dah itu paket tidak sampai di tempat tujuan. kalau boleh saya sarankan kepada pembeli lainnya, jangan pesan lagi deh ,barang disini, mereka tidak bertanggung jawab,",Sadness,Sadness,0.8134284019470215,10.034465789794922,0.0,2041,8
+"barang dibungkus pakai bubblewarp, trs pecah gatau dari jasa kirimnya atau pengemasannya, selain itu jasa kirimnya lama bgt asli, lumayan kecewa",Sadness,Sadness,0.9356727600097656,10.147979736328125,0.0,2024,8
+ujung buku rusak.. padahal sudah mahal beli buku import,Sadness,Sadness,0.6331932544708252,9.533695220947266,0.0,1998,8
+"baru pakai beberapa kali, sponnya terpisah jadi 3, lemnya tidak bagus",Sadness,Sadness,0.6000280380249023,9.526874542236328,0.0,2005,8
+ukurannya tidak sesuai..pesan 5x7 dikirim 4x6,Sadness,Sadness,0.7038705348968506,9.52065658569336,0.0,2002,8
+Suaranya gk bs bersih. Ada noise. Hasilnya lebih bagus ngerekam pakai headset iphone drpd pakai ini.,Sadness,Sadness,0.8238043785095215,9.518802642822266,0.0,2014,8
+Padahal udah tanya sebelumnya sama penjualnya ada ga balon warna gold dama silver ? Kalo ada mau pesen balo gold sama silvernya aja 10 pcs. Yang dateng warna warni kayak gini. Sebelumnya udah chating katanya oke hufth padahal udah 2 kali beli di sini baru kali ini aku kecewa,Sadness,Sadness,0.7177057266235352,9.51412582397461,0.0,2059,8
+"belom 1 bulan udah gak nyala, baterai udah diganti tetap saja gak nyala. kecewa, udah 2x di kerjain logitech",Sadness,Sadness,1.0237886905670166,9.521595001220703,0.0,2022,8
+"Packing kurang rapih, pinggir buku menjadi rusak",Sadness,Sadness,0.8279614448547363,9.536064147949219,0.0,1996,8
+Bahan sangat mudah bengkok pdhl hanya sepatu & sambungan mudah lepas.,Sadness,Sadness,0.6279783248901367,9.615966796875,0.0,2002,8
+infra red nya jelek suka mental ke mana2,Sadness,Anger,0.7372844219207764,9.598648071289062,0.0,1995,8
+lambat,Sadness,Sadness,0.7371647357940674,9.596427917480469,0.0,1988,8
+tipis bgt,Sadness,Sadness,0.8913161754608154,9.618484497070312,0.0,1989,8
+"kecewa sekali ada 10 lembar warnanya beda memang sekilas bentuk dan motif sama tpi saat mau dipasang beda sekali, rate barang 8/10 rate penjual 4/10",Sadness,Sadness,0.6822514533996582,9.618305206298828,0.0,2026,8
+kacamata sangat rentan. dipakai sekali patah. karena bagian karet dengan plastiknya menempel dengan kaitan kecil saja. sehingga mudah patah ..,Sadness,Sadness,0.8245642185211182,9.608386993408203,0.0,2018,8
+"Packing tdk ada, sudah tau pengiriman jauh tp tdk dilapisi pelindung. Sisi2 sudut barang rusak",Sadness,Sadness,0.7346737384796143,9.644886016845703,0.0,2013,8
+kecewa bagt. barang yg di kirim tidak sesuai. masih kurang 3 lagi. padahal uda langganan ko malah kecewain gitu...uda komplin ko malah ga respon ya..,Sadness,Sadness,0.6096675395965576,9.675251007080078,0.0,2027,8
+saya sangat kecewa belanja di toko ini. respon penjual cuek. tanggapan lama. begitu datang barang tumpah basah. satu minggu baru datang. tidak tau di kirim nya lama atau di pengiriman nya lama.,Sadness,Sadness,0.6410999298095703,9.658531188964844,0.0,2034,8
+wah sy pake sameday..masa dtgnya besoknya. smtra sy byr jam 13.30..respon lama..rugi lah tau gt sy ga ush pilih yg sameday..mksd biar cepet.malah jd lama.ga rekomen bgt.??,Fear,Sadness,2.880985975265503,9.513938903808594,0.0,2044,8
+"mohon maaf dikasih rating segini, karena barang yg dikirim tidak sesuai dan tidak ada follow up untuk penggantian barang, semoga kedepan dapat ditindak lanjuti, terima kasih banyak sebelumnya",Fear,Sadness,0.7367119789123535,9.49898910522461,0.0,2031,8
+"pembelian ke 2 beda 10 hari aja, kenapa pelet maxi nya beda ya, lebih kecil2 dr biasanya dan warna lebih gelap. aroma juga beda.",Fear,Sadness,0.6334900856018066,9.511306762695312,0.0,2020,8
+Barangnya ga ada,Fear,Sadness,0.6258776187896729,9.500991821289062,0.0,1989,8
+"Bahan plastiknya tdk stretch, kaku dan tidak bagus aluas tdk bs melekat spt plastiknya stretch biasanya, not recommended",Fear,Sadness,1.0386066436767578,9.52166748046875,0.0,2014,8
+"bad admin. Opportunity lost gara2 mau tambah pesanan tp diabaikan admin, harusnya jd perhatian untuk manajemen wingsfood.",Fear,Anger,0.937617301940918,9.478191375732422,0.0,2011,8
+PO udah sebulan gak sampai cm d kirim voucher dan di janjikan minggu k 3 bulan juni di kirim .. cuman sampe skrg udh akhir bulan juni blm terima juga � di chat gak balas???,Fear,Sadness,0.8488113880157471,9.4986572265625,0.0,2035,8
+"Pengirimannya sih cepat, tapi barangnya bruntusan gitu. Teman saya juga beli drum pad bahan karet dari malang tapi alus kok, ini yg saya beli malah bruntusan begitu. Ekspetasi saya tadinya bagus malah dapatnya yg jelekkan. Tdk sesuai foto yg di pajang oleh penjual.",Fear,Sadness,0.811812162399292,9.537277221679688,0.0,2055,8
+kemasan hancurrr pecah berantakan... ga jadi kepakai... ssmoga kedepannya lebih safety lagi packingnya...,Fear,Sadness,0.7425239086151123,9.538215637207031,0.0,2013,8
+pengiriman pertama sudah expired. barang diganti baru tp expired nya terlalu mepet (jarak 3 bulan ke tanggal expired). seharusnya dicek dulu sebelum dikirim ke pembeli.,Fear,Sadness,0.7697503566741943,9.524909973144531,0.0,2024,8
+tidak sesuai,Fear,Sadness,0.6955914497375488,9.539794921875,0.0,1988,8
+"Miniboxnya sih ok lampu led berfungsi dan menyala semua , tapi kabel usbnya bengkok jadi ga bisa masuk ke kepala charger jadi tidak bisa berfungsi dengan baik jadi saya pakai kabel charger hp, saya komplain dengan maksud tinggal kirim saja kabelnya tapi ini malah minta bukti unboxing lah memang saya youtuber hrs ada video unboxing klo belanja online, fyi ya kemasan dari ekspedi baik tidak ada rusak klo masalah didalemnya bengkok ya saya gak tau,",Fear,Sadness,0.6391034126281738,9.547401428222656,0.0,2091,8
+barang datang tidak lengkap. yidak akan pernah belanja lagi di toko remi loreal,Fear,Sadness,0.7310764789581299,9.491085052490234,0.0,2003,8
+Hari ini baru terpasang. Ternyata ada satu palang yg ukuran pendek cacat..bengkok dan cedok bekas besi ditekuk..akhirnya saya pindah posisi palang tersebut dibagian tengah dalam..secara keseluruhan barang baik. Mungkin perlu ditingkatkan QC nya saja.,Fear,Sadness,0.7412910461425781,9.49197006225586,0.0,2050,8
+"Admin toko ini tdk punya sopan santun, bukannya cari solusi msalah, ini malah emosional dan hina pembeli. , gk pnya etika dan gk sekolah x, ,",Fear,Anger,0.711479663848877,9.511051177978516,0.0,2026,8
+gk ada plat besinya...cm ada label merk bahan,Fear,Sadness,0.6302306652069092,9.51141357421875,0.0,1997,8
+Iklannya Seragam PGRI Kemeja Hem Katun Pria. Tp ternyata bahannya bukan katun... Smg ke depan deskripsi sama dg iklannya shg pelanggan tidak kecewa lo,Fear,Sadness,0.8350622653961182,9.508216857910156,0.0,2028,8
+"packaging gk aman bgt, bubble wrap tipis alhasil kemasan barang agak penyok pas dateng, thank god barangnya aman. ini official store seharusnya lebih baik lagi, fix min next duh.",Fear,Sadness,0.6871440410614014,9.502300262451172,0.0,2030,8
+"barangnya gak sesuai gambar, biasa aja, pantes hrg murah",Fear,Sadness,0.676926851272583,9.515552520751953,0.0,1999,8
+"kartu tidak terdeteksi jadi jam gk cocok, sudah coba2 cari di yutube tutorial tetap gk bisa.... akhirnya nyesel deh beli :(",Fear,Sadness,0.9376828670501709,9.5146484375,0.0,2020,8
+Produk nya bocor karena packing nya krg bgs. Dr dus luar nya aja basah sampe ke dlm. Isi botol habis stengah nya. Mungkin bisa jadi masukkan buat seller supaya lain kali bisa packing yg lbh aman.,Fear,Sadness,5.646900653839111,9.502670288085938,0.0,2036,8
+"Barang yang dikirimkan tidak sesuai dengan orderan saya, ditanya pihak maxim tidak ada balasan sama sekali hanya dibaca saja. Dari pihak Tokopedia pun sudah dikomplain malah transaksinya selesai dan dananya diteruska ke Maxim. Lalu barang saya yang kurang bagaimana? Tokopedia bilang dichat saja. Pintar sekali jawabannya. Sudah saya komplain kalo penjual tidak merespon. Bobrok sekali sistemnya.",Fear,Anger,1.5496206283569336,9.53048324584961,0.0,2075,8
+"Koneksi perangkat susah, kalaupun konek seringkali putus, buku petunjuk minim info. Pdhal beli pilihan yg paling mahal. Apa saya saja yg terima barang spt ini?",Fear,Sadness,0.7353827953338623,9.54073715209961,0.0,2026,8
+"tidak recommend banget pelayanan ngk bagus dan tidak sesuai di foto, Saya beli 2 tetapi lampu Mati satu dan tidak lengkap",Fear,Sadness,0.6298112869262695,9.522506713867188,0.0,2011,8
+barang tidak sampai. tdk ada solusi,Fear,Sadness,0.7363803386688232,9.522270202636719,0.0,1993,8
+beli 5 pd gosong semua.??baru apa bekas nih? biasanya beli ga gini. untung asuransi 90 hari.,Fear,Sadness,1.077009677886963,9.523269653320312,0.0,2015,8
+"bukan soal uangnya ,tapi soal ke amanahannya. kirim barang ada yg nggak dikirim(tidak lengkap) bukannya berniat dikirim kekurangannya malah belibet saat di inbox berkali kali. alasan macam2 minta no pesanan dan no resi sudah dikasih tetep aja alesan belibet. salah sendiri kirim brg ngga lengkap. sangat nggak rekomended.",Fear,Anger,0.8038392066955566,9.528911590576172,0.0,2070,8
+"baunya pasaran, prtama kali pakai semua orang sekitar gue sakit kepala.. jangan trlalu expektasi tinggi... rugi kalian harga segitu..",Fear,Sadness,0.6918063163757324,9.52310562133789,0.0,2019,8
+"Pesanan tidak dikirim, tidak ada komunikasi apapun, tidak ada solusi pengembalian barang ataupun biaya",Fear,Sadness,0.6619565486907959,9.332721710205078,0.0,2006,8
+"sangat kecewa belanja disini, response sangat lambat,order instant courier di kirim besok nya & sore pula aduuuuh... Official store tapi pelayanan nya kayak gini, its not recomended deh",Fear,Sadness,0.628607988357544,9.33383560180664,0.0,2030,8
+"mesin kasar, pelayanan kurang",Fear,Anger,0.7188327312469482,9.3272705078125,0.0,1991,8
+packingnya kurang memuaskan,Fear,Sadness,0.6431577205657959,9.317924499511719,0.0,1991,8
+"dipakai untuk mindahin tabung gas 12 kg sangat seret, susah maju karena rodanya tidak jalan, bobot tabung gas terlalu berat..not recommended utk tabung gas 12 kg..mungkin untuk yang lbh ringan bisa lancar rodanya berputar..",Fear,Sadness,0.6336081027984619,9.364978790283203,0.0,2043,8
+"Sy order 5pcs dikirim cuma 4, Krn weekend senin sy Baru Cek system sdh close, ini penjual penipu Krn ditanya tdk mau jawab padahal dia online",Fear,Anger,0.6289727687835693,9.363391876220703,0.0,2027,8
+untuk jepit ke mejanya loss. ga bisa ngunci. sudah di coba dengan SEAL TAPE. tapi terlalu longgar sehingga tidak bisa nge lock. untuk boom arm nya bagus. sayang jadi bingung pakenya karna ga bisa ngelock,Fear,Sadness,0.7552013397216797,9.36431884765625,0.0,2040,8
+Parah ini toko ga ada tanggung jawab nya,Fear,Anger,0.8078625202178955,9.3736572265625,0.0,1995,8
+"Waktu sampai nya lakban Tokopedia di saya sangat lama,ketika saya tanyakan malah di suruh komplain,pelayanan nya buruk,admin yang bagian chatting nya sangat buruk dalam melayani Customer",Fear,Anger,0.866243839263916,9.378643035888672,0.0,2026,8
+Ternyata tidak sesuai. Tidak dpat dipakai,Fear,Sadness,1.024958848953247,9.342761993408203,0.0,1996,8
+beli 2 dipakai dua hari udah hangus. kapok beli disini. 2 catridge gak sampe seminggu.,Fear,Sadness,0.7377409934997559,9.381359100341797,0.0,2014,8
+"Sudah kuduga kalau beli banyak, pasti ada beberapa yang barangnya dikasih dalam kondisi cacat dan ternyata beneran dong wkwk, yang pecah malah barang di urutan ke 4,9 dari total 24 item yang saya order + kualitas barang ternyata hanya plastik tipis(tidak sesuai perkiraan saya karena yang ditampilkan toko hanya tampilan depan saja) Overall i wouldn�t recommend this to y�all",Fear,Sadness,0.7242593765258789,9.380218505859375,0.0,2072,8
+"Barang baru diterima dicoba ternyata sudah rusak, masak nasi tidak panas. setelah dibawa ke service center ternyata heating element nya yang rusak dan harus nunggu service 1 - 2 minggu dan tidak bisa ganti baru. padahal barang baru datang dicoba sudah rusak. sekarang kondisi belum megang rice cookernya masih nunggu diservice repot juga service adanya diluar kota.",Fear,Sadness,0.7306232452392578,9.375076293945312,0.0,2066,8
+"bukan dendeng daging sapi asli, semacam campuran",Fear,Sadness,0.7208678722381592,9.394294738769531,0.0,1998,8
+"beli 10pcs hampir rusak semua bentuknya, dan toko terus berdalih, ya udah utk pelajaran aja utk yg mau beli",Fear,Sadness,1.0448060035705566,9.423065185546875,0.0,2014,8
+Barangnya tidak seperti barang baru dan tanpa kemasan pabrik.,Fear,Sadness,0.7742414474487305,9.467796325683594,0.0,1997,8
+Gak sesuai gambar disitu gulanya yg hijau kenapa dikirimnya yang kuning sih beda mereka harganya rasanya juga beda lbh enak yg hijau kenapa begini tokped jd pengguna baru malah nyesel,Fear,Sadness,0.6906077861785889,9.47271728515625,0.0,2035,8
+"Fastresp banget, ramah juga, pengirimannya gercep banget, lv. Ada y dikaskh lebih jga dong balonnya. Belum di pompa sih smg gaada yg bocor??",Love,Happy,0.6066737174987793,9.783493041992188,0.0,2030,7
+"wow wow sangaat praktis euy, tapi emang harganya mayaan sihh, rasanya enak, mantul, bakal repeat order nihh",Love,Happy,1.0574755668640137,9.726921081542969,0.0,2018,7
+puas banget ????????????????,Love,Happy,0.6732182502746582,9.709571838378906,0.0,1992,7
+mantaaaaaaaaapppppp pelayanan cepat pengirimannya... top markotop 10 bintang recommended. pagi order malam udah nyampe... luar biasa,Love,Happy,0.8905401229858398,9.676155090332031,0.0,2017,7
+"Mienya enak Favorit keluarga. Sudah langganan beli mie sedap di toko OS , packing rapi dan dpt bonus. makasih ya????",Love,Love,0.6325039863586426,9.665760040283203,0.0,2020,7
+barang bagus..Bahannya adem. Modelnya cantik ??.,Love,Love,1.6631360054016113,9.665611267089844,0.0,1997,7
+reoderrrrr,Love,Anger,0.7369966506958008,9.63851547241211,0.0,1990,8
+Seller ramah dan fast response. Packaging rapih dan kualitas kaos ok ?? bakal beli lagi ??,Love,Love,0.5880188941955566,9.623546600341797,0.0,2005,7
+"Produk sesuai, pengiriman cepat, packing aman, recommended seller????",Love,Happy,0.6702709197998047,9.605514526367188,0.0,1998,7
+"Instalasi Mudah. pengiriman cpt. respon cpt, trims seller smoga awet. Aamiin sukses selalu, seller & Tokopedia.",Love,Happy,0.7203011512756348,9.606765747070312,0.0,2016,7
+"Sudah order yg kedua disini, packingnya rapi, untuk lilin sama tulisan ulang tahun yang rentan patah dimasukkan ke dalam kardus ??pengirimannya juga cepat, semua barang yg dipesan lengkap dan kualitas bagus semua, balon2 ga ada yg bocor, lilin dan tulisan ultah nya juga ga ada yg patah. Anak bungsu saya senaaaaang sekali. Terima kasih banyak ya ??",Love,Love,0.8348298072814941,9.603775024414062,0.0,2075,7
+"begitu datang ini langsung dicobain, semua berfungsi baik. saya suka karena mist-nya lembut, dan modelnya itu lho keren banget! puas dan semoga awet. respon, proses, pengiriman toko cepat, dan kemasan aman. terima kasih banyak untuk bonusnya ya",Love,Love,1.1399741172790527,9.604270935058594,0.0,2046,7
+"Recommended Seller!! Respon cepat, pengiriman cukup cepat...",Love,Happy,0.7327489852905273,9.588287353515625,0.0,1996,7
+jangan lupa gaes diorder toko ini,Love,Fear,0.63112473487854,9.585723876953125,0.0,1994,7
+Puas sih.. Recomended bukunya,Love,Love,0.65968918800354,9.588119506835938,0.0,1994,7
+paaaaas banget ukurannya buat gantiin tempat sampah lama. barang bagus warna cantik. miniso ga pernah ngecewain sihKualitas Product Bagus. Material bagus. Harga terjangkau!. Recomended.,Love,Love,0.7206313610076904,9.577926635742188,0.0,2031,7
+bagus bgt bukunya. suka. makasih,Love,Love,0.6127638816833496,9.576427459716797,0.0,1997,7
+"BAGUUUSSSS PACKING RAPUI, CEPAT SAMPAI, TERIMAKASIH SELLER.... SUKSES SELALUU...",Love,Happy,0.6187520027160645,9.575668334960938,0.0,2016,7
+"check in nya gampang bgt, cuma kasih liat aja invoice sama KTP next, mau lah order voucher lagi di sini makasih",Love,Love,0.7433574199676514,9.575958251953125,0.0,2013,7
+Bahannya adem. Warnanya cantik ??. Ukuran sesuai. terimakasih,Love,Happy,0.9539427757263184,9.573280334472656,0.0,2003,7
+Suka sama box nya ciamik dehhhhhhhhhhhhhhhhhhhhh,Love,Love,0.7175352573394775,9.572826385498047,0.0,2000,7
+order yang ketiga. gercep. barang oke. pelayanan juga oke,Love,Happy,0.7775418758392334,9.573326110839844,0.0,1999,7
+"packing rapih, fast response, dan rgbnya juga bagus ??sangat di rekomendasikan 10/10",Love,Happy,1.6948773860931396,9.572650909423828,0.0,2008,7
+Selalu the best bgt deh... anabul ngga usah di train aja langsung tau ????,Love,Love,0.6425876617431641,9.568939208984375,0.0,2006,7
+mantappppppppppppppppppppppppppppppppp,Love,Happy,4.109511375427246,9.552162170410156,0.0,2003,7
+"Build quality cakep,,stik normal smua,,pengiriman gak sampai 24jam,,??????recomended bgt",Love,Happy,0.6633188724517822,9.554351806640625,0.0,2011,7
+Produk yang diterima lengkap. Pas di kepala. Lampunya terang. Mantap pokoknya rekomendasi ??,Love,Happy,1.0099680423736572,9.554973602294922,0.0,2008,7
+"So far kualitas dan bentuk pellet paling bagus dari smua toko yg pernah saya beli. Packing oke dan pengiriman juga cepat, recommended lah pokoknya ????",Love,Happy,0.6298036575317383,9.552619934082031,0.0,2016,7
+"Orderan yg ke 3 kali, selalu puas, unit bor nya mantap, seller ramah gercep, kurir cepat, next order lagi..",Love,Love,0.6291613578796387,9.553924560546875,0.0,2016,7
+langganan beli minigold disini ??,Love,Love,0.7332882881164551,9.543827056884766,0.0,1995,7
+suka banget sama original source yang mint,Love,Love,0.8003885746002197,9.545074462890625,0.0,1993,7
+"game lancar, kondisi box dan game cartridges mulus, pengiriman super cepat, seller yg super responsive, thanks gan recommended bgt beli game disini",Love,Love,0.8320579528808594,9.602130889892578,0.0,2016,7
+Mantapppp.Build qualitynya josss Pertahankan,Love,Happy,0.869403600692749,9.60250473022461,0.0,1997,7
+mantap. pengiriman nya cepat banget. barang oke semua dan berfungsi. kondisi mulus ??% mantap. cahaya nya juga terang banget. top markotop,Love,Happy,0.7312157154083252,9.512516021728516,0.0,2020,7
+"alhmdllh pkt ny dah smpe..ank2 seneng bgt klu Makan sama sarden ABC..makasi seller,Tokopedia.",Love,Love,0.6103096008300781,9.51144027709961,0.0,2017,7
+"Pengiriman cepat dan aman. Barang sesuai deskripsi. Bagian ujungnya terbuat dari plastik, tapi cukup kokoh. Perakitan mudah, cuma modal obeng. Tips: Jangan dikencengin dulu semua bautnya, kecuali kalau sudah fixed dgn ukuran kaki mesin cuci. Recommended. ????",Love,Happy,0.855710506439209,9.313671112060547,0.0,2048,7
+manchapppp.. sy suka. rekomen seller..,Love,Love,1.9453368186950684,9.268501281738281,0.0,1997,7
+Mantap donk. Produk Original.,Love,Love,0.6448578834533691,9.264575958251953,0.0,1992,7
+mantul boskuhhh barang istimewa,Love,Love,0.63167405128479,9.266109466552734,0.0,1994,7
+Suka dengan bardi ini. Membantu banget matiin beberapa alat pas jam nya tidur dan hidup di pagi hari...dirumah sudah pakai beberapa alat bardi seperti cctv. Di akses nya sangat mudah walau diluar rumah.. Keren..????????,Love,Love,0.7310781478881836,9.22768783569336,0.0,2039,7
+lucu bgt warnanya. recommended harga murah tapi ngga murahan. next bakal order lagi,Love,Love,0.6437726020812988,9.223426818847656,0.0,2005,7
+"Respond seller cepat, pengiriman segera. Produk berkualitas. Mantap banget.",Love,Happy,0.5751605033874512,9.263019561767578,0.0,2000,7
+mantappppp,Love,Happy,0.6703059673309326,9.263072967529297,0.0,1989,7
+"pohonnya masih segar, bonusnya juga banyak. makasih ya. udah 2x beli di sini.",Love,Love,0.642890453338623,9.294639587402344,0.0,2011,7
+"Selalu bagus produknya, pembelian ke 2 Mantapp min, smoga laris",Love,Love,0.8407502174377441,9.290538787841797,0.0,2005,7
+Konsumen ga dianggap... Attitude merupakan hal pokok dan semestinya tetap dinomorsatukan.,Anger,Anger,0.7134988307952881,9.290130615234375,0.0,2007,8
+GA DIKASIH ADAPTOR GEPENG NYA. KETIPU SAYA,Anger,Anger,1.261169195175171,9.27573013305664,0.0,2005,8
+"packaging kurang rapih, semua kemasan produk BOLT sobek.. sehingga ketika unboxing, isi makanan berantakan",Anger,Sadness,0.7140610218048096,9.290904998779297,0.0,2010,8
+"Rasanya ngadi2 sumpah, kayak pake saos sambel ?? kyk gapake gochujang & gochugaru. Yang biasa makan kimchi asli korea pasti gaakan suka. Pengiriman super lelet pesen hr rabu br dtg hari minggu gils.",Anger,Sadness,0.9448761940002441,9.349590301513672,0.0,2043,8
+penjual gk respon bgt parah,Anger,Anger,0.7676942348480225,9.33267593383789,0.0,1994,8
+"orng nnya responnya jutek bgt,, biasa aja kali, saya cm bertanya ga ngajak debat,, sombong bgt penjual kyak bgini...",Anger,Anger,0.5733766555786133,9.33108139038086,0.0,2020,8
+barang yg dikirim gk sesuai modelnya,Anger,Sadness,0.9521381855010986,9.326519012451172,0.0,1994,8
+Barang mau dikirim pakai ekspedisi ke luar kota tapi tidak dibungkus plastik!!! Background basah akhirnya tidak bisa dipakai sama sekali.,Anger,Sadness,1.4291744232177734,9.340267181396484,0.0,2014,8
+aromanya bikin pusing dan mual,Anger,Sadness,0.6503369808197021,9.343753814697266,0.0,1994,8
+lubang nya jelek bgt,Anger,Sadness,0.7290809154510498,9.342235565185547,0.0,1992,8
+seller tidak bertanggung jawab. ????,Anger,Anger,0.7530755996704102,9.332534790039062,0.0,1992,8
+alamak....buset.packingnya kurang rapi...di bungkus plastik putih transparan aja.harusnya di bungkus plastik hitam aja biar rapih.,Anger,Anger,0.620753288269043,9.333961486816406,0.0,2019,8
+bohong. Sama sekali tidak manjur.,Anger,Sadness,0.6173315048217773,9.234737396240234,0.0,1993,8
+"Beli 6 cuma dikirim 5, males complain ??",Anger,Sadness,0.8331546783447266,9.22635269165039,0.0,1998,8
+palsu ya. g berfungsi. bahan kasar dan sakit kalo dipakai.,Anger,Anger,0.7308738231658936,9.22146224975586,0.0,2002,8
+"Chatt, hampir Ga ada respond",Anger,Sadness,7.388182878494263,9.196109771728516,0.0,1992,8
+"kurang 1, penjual kurang teliti atau sengaja.",Anger,Anger,0.6454365253448486,9.191047668457031,0.0,1998,8
+"kualitas barang dibanding harga nya hanya so so lahh....pelayanan minus -100 sbgmn layaknya kesombongan seorang raja, apalagi pengiriman barang, seenak jidat macam tidak ada lagi produsen consumer goods lain di tata surya ini!!! no wonder nilai / valuasi perusahaan anda sudah turun lebih dari 50% dalam 1 tahun terakhir ini. semoga makin jeblok dan gulung tikar kmdn pulang kampung. SEMOGA!!!",Anger,Anger,0.6511096954345703,9.181236267089844,0.0,2082,8
+lama banget sampenya..pas nyampe jamuran gini..haduuh..parah deh,Anger,Sadness,0.7022058963775635,9.177284240722656,0.0,2006,8
+"yg di pesan warna ngga sesuai klu memang ngga ada bilang aja ngga ada jgn bilang ada, saya ini beli bukan minta.",Anger,Anger,0.6365137100219727,9.177894592285156,0.0,2014,8
+Roti keras gak enak,Anger,Sadness,0.8176240921020508,9.178165435791016,0.0,1991,8
+"udang red bee yg dipesan tdk ada,sdh dikomplain malah diteruskan tokped dana nya ke penjual",Anger,Sadness,0.7331991195678711,9.184375762939453,0.0,2013,8
+l2 r2 trigger nya ampas macam ***,Anger,Anger,0.7307322025299072,9.185127258300781,0.0,1995,8
+"bocor!! paket basah, jd tinggal bublrwrap terikat isolasi aja plus liquid. rasa nya mau gak mau tidak enak. untuk yang lainnya (botol kaca) aman",Anger,Anger,0.7330148220062256,9.184867858886719,0.0,2025,8
+"Barang dateng pake kurir toko, di unboxing trnyt ad lecet/baret ampe besi ny keliatan sesuai dengan foto yg saya ambil. Dlm chat dgn owner tidak ad pertanggung jwban, chat sy cm di read dr smnjk kmrn mlm (6 april 2020 jam 8an mlm, smpe skg tgl 7 april 2020 jam 16.30an)",Anger,Sadness,0.6680359840393066,9.229267120361328,0.0,2075,8
+"cepet rusak, kadang konek kadang engga",Anger,Sadness,0.7017886638641357,9.229965209960938,0.0,1998,8
+"order minggu sampainya rabu, lambat nya minta ampuun, di tanyain baru info kalau overload orderan, itupun baru selasa dikirim, ga ada konfirmasi awal kalau overload orderan. ga tanggungjawab.",Anger,Anger,0.8263468742370605,9.236083984375,0.0,2035,8
+BARANG TIDAK SESUAI PESANAN.. DIMINTA GOLD MALAH D KIRIM WARNA PUTIH DAN MERK LAIN!!,Anger,Anger,1.1427419185638428,9.237014770507812,0.0,2017,8
+SALAH ALAMAT. Sudah saya kirim chat bahwa minta dicancel utk pesanan tsb krn sy salah masukin alamat. Menit berikutnya langsung saya pesan ulang ke alamat yg betul. Bukannya dibaca dulu chatnya malah langsung diproses dua2nya. DASAR GAK BECUS !!!! Ifillll dan gak akan pesan di toko ini lagi.,Anger,Anger,0.6286494731903076,9.233837127685547,0.0,2064,8
+DUANYA LAGI GOIB,Anger,Love,1.9142372608184814,9.193771362304688,0.0,1993,7
+yg dikirim russakkkkk guys ampun dahh,Anger,Anger,0.5891993045806885,9.19662857055664,0.0,1996,8
+ga sesuai expetasi.....barang2 nya ga kuat.ukuran kcl kaya mainan.,Anger,Sadness,1.1261827945709229,9.189434051513672,0.0,2003,8
+masa baru dateng langsung rusak,Anger,Sadness,5.644266843795776,9.178653717041016,0.0,1992,8
+"penyok, packingnya juga kurang aman",Anger,Sadness,0.7325544357299805,9.187744140625,0.0,1994,8
+KIRIM PAKET GA NGOTAK.. RESOLUSI ARBITER TOKOPEDIA USELESS.. ??,Anger,Anger,0.8331418037414551,9.191200256347656,0.0,2010,8
+"barang kualitas jelek, kaki patah, banyak pecah sedikit ditekuk pecah dan copot.. blum sempet pake udh tak buang aja",Anger,Sadness,0.732172966003418,9.189098358154297,0.0,2018,8
+"packing hanya buble wrap, lain kali tambahkan kardus. komunikasikan pengiriman dengan jelas biar tidak repot, masa dikirim terpisah case nya, mana ngga instan, dan ngga bisa dicancel.",Anger,Sadness,1.0410370826721191,9.190994262695312,0.0,2031,8
+Susah bgt pasangnya!!! Gak kuat menahan airnya!!!,Anger,Anger,0.7295222282409668,9.188858032226562,0.0,2000,8
+"Busa doank, tidak saya rekomendasikan",Anger,Sadness,0.7442965507507324,9.189773559570312,0.0,1995,8
+"Chat tidak di balas, Kuota yang di janjikan 50gb nya tidak masuk, hancur la Parah parah",Anger,Anger,0.619128942489624,9.137199401855469,0.0,2013,8
+Parah respon nya Butuh 4 hr sejak order baru dikirim Granola nya jg ancur semua,Anger,Anger,0.7306938171386719,9.109844207763672,0.0,2007,8
+buruk super duper buruk kok bisa rusakk dlm nya ini pasti di banting2 sama JNE heran udah di bilang pake YESS YESS malah REG 15 sedia in yess dong tokopedia heran saya,Anger,Anger,0.7289061546325684,9.089347839355469,0.0,2033,8
+kw kirim brg bekas dan rusak serta tdk menerima komplain kapok bgt ga bkl lnja lg dsni,Anger,Anger,0.6308562755584717,9.107185363769531,0.0,2013,8
+"Jualan kok ngotottt, nggak laku toko nya bang?",Anger,Anger,0.6275131702423096,9.11410140991211,0.0,2001,8
+bocor payahlah ga di periksa dulu,Anger,Anger,0.7359328269958496,9.161453247070312,0.0,1996,8
