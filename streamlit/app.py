@@ -12,8 +12,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import torch.nn.functional as F
 import numpy as np
-from google import genai
-from google.genai import types
+from openai import OpenAI
 import os
 
 model_path = "Rasyy/indobert_multiclass_emotion_classifier_for_indonesian_e_commerce_reviews"  # Pastikan path ini benar
@@ -27,12 +26,10 @@ LABEL_MAP = {
 }
 
 try:
-    # Inisialisasi Klien Gemini
-    client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-    model_name = "gemini-2.5-flash"
-
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    model_name = "gpt-4.1-mini"  # bisa ganti gpt-4.1 jika mau kualitas lebih tinggi
 except Exception as e:
-    print(f"❌ Gagal menginisialisasi Gemini Client. Periksa GEMINI_API_KEY: {e}")
+    st.error(f"❌ Gagal inisialisasi OpenAI Client: {e}")
     client = None
 
 system_prompt = """
@@ -192,11 +189,11 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan Presisi per Label")
     precision_data = {
         "Model": [
-            "DistilBERT", "RoBERTa", "mBERT", "IndoBERT",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)"
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
-            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)",
+            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)", "GPT-4.1 nano (25-shot)",
             "Llama3.1-8B (0-shot)", "Llama3.1-8B (5-shot)", "Llama3.1-8B (10-shot)", "Llama3.1-8B (15-shot)",
             "Llama3.1-8B (20-shot)", "Llama3.1-8B (25-shot)",
             "Gemma3-12B (0-shot)", "Gemma3-12B (5-shot)", "Gemma3-12B (10-shot)", "Gemma3-12B (15-shot)",
@@ -204,17 +201,17 @@ def model_analysis_page():
         ],
 
         # LABEL SCORES
-        "Anger":   [0.72, 0.71, 0.71, 0.75, 0.54, 0.60, 0.57, 0.63, 0.62, 0.72, 0.60, 0.59, 0.62, 0.60, 0.64, 0.70, 0.56, 0.50, 0.56, 0.59, 0.53, 0.62, 0.53, 0.69, 0.67, 0.64, 0.64, 0.66],
-        "Fear":    [0.61, 0.55, 0.59, 0.80, 0.00, 0.40, 0.67, 0.67, 0.50, 0.67, 1.00, 0.50, 0.49, 0.45, 0.48, 0.49, 0.00, 0.30, 0.36, 0.43, 0.40, 0.31, 0.00, 0.50, 0.43, 0.50, 0.33, 0.33],
-        "Happy":   [0.84, 0.74, 0.80, 0.84, 0.71, 0.73, 0.72, 0.77, 0.73, 0.74, 0.60, 0.73, 0.76, 0.77, 0.74, 0.74, 0.51, 0.55, 0.56, 0.57, 0.67, 0.61, 0.62, 0.72, 0.59, 0.62, 0.68, 0.65],
-        "Love":    [0.93, 0.84, 0.86, 0.97, 0.93, 0.88, 0.83, 0.85, 0.86, 0.84, 0.89, 0.82, 0.85, 0.80, 0.80, 0.80, 1.00, 0.67, 0.71, 0.75, 0.73, 0.70, 0.86, 0.85, 0.88, 0.77, 0.81, 0.88],
-        "Sadness": [0.79, 0.71, 0.67, 0.87, 0.49, 0.47, 0.47, 0.48, 0.48, 0.46, 0.46, 0.50, 0.47, 0.52, 0.52, 0.50, 0.47, 0.51, 0.51, 0.48, 0.49, 0.45, 0.48, 0.47, 0.47, 0.49, 0.44, 0.43],
+        "Anger":   [0.72, 0.71, 0.71, 0.75, 0.87, 0.54, 0.60, 0.57, 0.63, 0.62, 0.72, 0.60, 0.59, 0.62, 0.60, 0.64, 0.70, 0.71, 0.56, 0.50, 0.56, 0.59, 0.53, 0.62, 0.53, 0.69, 0.67, 0.64, 0.64, 0.66],
+        "Fear":    [0.61, 0.55, 0.59, 0.80, 0.89, 0.00, 0.40, 0.67, 0.67, 0.50, 0.67, 1.00, 0.50, 0.49, 0.45, 0.48, 0.49, 0.00, 0.00, 0.30, 0.36, 0.43, 0.40, 0.31, 0.00, 0.50, 0.43, 0.50, 0.33, 0.33],
+        "Happy":   [0.84, 0.74, 0.80, 0.84, 0.83, 0.71, 0.73, 0.72, 0.77, 0.73, 0.74, 0.60, 0.73, 0.76, 0.77, 0.74, 0.74, 0.61, 0.51, 0.55, 0.56, 0.57, 0.67, 0.61, 0.62, 0.72, 0.59, 0.62, 0.68, 0.65],
+        "Love":    [0.93, 0.84, 0.86, 0.97, 0.86, 0.93, 0.88, 0.83, 0.85, 0.86, 0.84, 0.89, 0.82, 0.85, 0.80, 0.80, 0.80, 0.64, 1.00, 0.67, 0.71, 0.75, 0.73, 0.70, 0.86, 0.85, 0.88, 0.77, 0.81, 0.88],
+        "Sadness": [0.79, 0.71, 0.67, 0.87, 0.69, 0.49, 0.47, 0.47, 0.48, 0.48, 0.46, 0.46, 0.50, 0.47, 0.52, 0.52, 0.50, 0.43, 0.47, 0.51, 0.51, 0.48, 0.49, 0.45, 0.48, 0.47, 0.47, 0.49, 0.44, 0.43],
 
         # MACRO AVG
         "Precision Macro Avg": [
-            0.78, 0.71, 0.73, 0.85,
+            0.78, 0.71, 0.73, 0.85, 0.83, 
             0.53, 0.62, 0.65, 0.68, 0.64, 0.68,
-            0.71, 0.63, 0.64, 0.63, 0.64, 0.65,
+            0.71, 0.63, 0.64, 0.63, 0.64, 0.65, 0.48,
             0.51, 0.51, 0.54, 0.57, 0.56, 0.54,
             0.50, 0.65, 0.61, 0.60, 0.58, 0.59
         ]
@@ -229,11 +226,11 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan Recall per Label")
     recall_data = {
         "Model": [
-            "DistilBERT", "RoBERTa", "mBERT", "IndoBERT",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
-            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)",
+            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)", "GPT-4.1 nano (25-shot)",
             "Llama3.1-8B (0-shot)", "Llama3.1-8B (5-shot)", "Llama3.1-8B (10-shot)", "Llama3.1-8B (15-shot)",
             "Llama3.1-8B (20-shot)", "Llama3.1-8B (25-shot)",
             "Gemma3-12B (0-shot)", "Gemma3-12B (5-shot)", "Gemma3-12B (10-shot)", "Gemma3-12B (15-shot)",
@@ -241,49 +238,49 @@ def model_analysis_page():
         ],
 
         "Anger": [
-            0.69, 0.49, 0.56, 0.87,
+            0.69, 0.49, 0.56, 0.87, 0.73,
             0.80, 0.73, 0.69, 0.71, 0.69, 0.62,
-            0.60, 0.67, 0.64, 0.67, 0.62, 0.62,
+            0.60, 0.67, 0.64, 0.67, 0.62, 0.62, 0.53,
             0.80, 0.84, 0.84, 0.76, 0.71, 0.73,
             0.69, 0.64, 0.64, 0.67, 0.56, 0.51
         ],
 
         "Fear": [
-            0.78, 0.69, 0.53, 0.78,
+            0.78, 0.69, 0.53, 0.78, 0.71,
             0.00, 0.04, 0.09, 0.09, 0.04, 0.09,
-            0.02, 0.18, 0.42, 0.31, 0.31, 0.40,
+            0.02, 0.18, 0.42, 0.31, 0.31, 0.40, 0.00,
             0.00, 0.07, 0.11, 0.22, 0.18, 0.11,
             0.00, 0.09, 0.07, 0.09, 0.04, 0.04
         ],
 
         "Happy": [
-            0.93, 0.87, 0.89, 0.96,
+            0.93, 0.87, 0.89, 0.96, 0.87,
             0.91, 0.84, 0.80, 0.82, 0.84, 0.82,
-            0.91, 0.80, 0.82, 0.76, 0.78, 0.78,
+            0.91, 0.80, 0.82, 0.76, 0.78, 0.78, 0.69,
             0.96, 0.82, 0.89, 0.87, 0.76, 0.78,
             0.89, 0.84, 0.91, 0.82, 0.80, 0.87
         ],
 
         "Love": [
-            0.84, 0.80, 0.84, 0.84,
+            0.84, 0.80, 0.84, 0.84, 0.82,
             0.60, 0.67, 0.67, 0.73, 0.67, 0.69,
-            0.38, 0.71, 0.73, 0.78, 0.73, 0.73,
+            0.38, 0.71, 0.73, 0.78, 0.73, 0.73, 0.51,
             0.02, 0.31, 0.27, 0.33, 0.60, 0.47,
             0.40, 0.62, 0.33, 0.44, 0.58, 0.51
         ],
 
         "Sadness": [
-            0.60, 0.67, 0.82, 0.76,
+            0.60, 0.67, 0.82, 0.76, 0.93,
             0.76, 0.82, 0.82, 0.87, 0.89, 0.96,
-            0.93, 0.78, 0.53, 0.64, 0.73, 0.67,
+            0.93, 0.78, 0.53, 0.64, 0.73, 0.67, 0.98,
             0.80, 0.58, 0.62, 0.60, 0.62, 0.69,
             0.84, 0.93, 0.91, 0.91, 0.93, 0.93
         ],
 
         "Recall Macro Avg": [
-            0.77, 0.70, 0.73, 0.84,
+            0.77, 0.70, 0.73, 0.84, 0.81,
             0.61, 0.62, 0.61, 0.64, 0.63, 0.64,
-            0.57, 0.63, 0.63, 0.63, 0.64, 0.64,
+            0.57, 0.63, 0.63, 0.63, 0.64, 0.64, 0.54,
             0.52, 0.52, 0.55, 0.56, 0.57, 0.56,
             0.56, 0.63, 0.57, 0.59, 0.58, 0.57
         ]
@@ -298,11 +295,11 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan F1 Score per Label")
     f1_data = {
         "Model": [
-            "DistilBERT", "RoBERTa", "mBERT", "IndoBERT",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
-            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)",
+            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)", "GPT-4.1 nano (25-shot)",
             "Llama3.1-8B (0-shot)", "Llama3.1-8B (5-shot)", "Llama3.1-8B (10-shot)", "Llama3.1-8B (15-shot)",
             "Llama3.1-8B (20-shot)", "Llama3.1-8B (25-shot)",
             "Gemma3-12B (0-shot)", "Gemma3-12B (5-shot)", "Gemma3-12B (10-shot)", 
@@ -310,49 +307,49 @@ def model_analysis_page():
         ],
 
         "Anger": [
-            0.70, 0.58, 0.62, 0.80,
+            0.70, 0.58, 0.62, 0.80, 0.80,
             0.64, 0.66, 0.63, 0.67, 0.65, 0.67,
-            0.60, 0.62, 0.63, 0.63, 0.63, 0.66,
+            0.60, 0.62, 0.63, 0.63, 0.63, 0.66, 0.61,
             0.66, 0.63, 0.67, 0.66, 0.61, 0.67,
             0.60, 0.67, 0.66, 0.65, 0.60, 0.57
         ],
 
         "Fear": [
-            0.69, 0.61, 0.56, 0.79,
+            0.69, 0.61, 0.56, 0.79, 0.79,
             0.00, 0.08, 0.16, 0.16, 0.08, 0.16,
-            0.04, 0.26, 0.45, 0.37, 0.38, 0.44,
+            0.04, 0.26, 0.45, 0.37, 0.38, 0.44, 0.00,
             0.00, 0.11, 0.17, 0.29, 0.25, 0.16,
             0.00, 0.15, 0.12, 0.15, 0.08, 0.08
         ],
 
         "Happy": [
-            0.88, 0.80, 0.84, 0.90,
+            0.88, 0.80, 0.84, 0.90, 0.85,
             0.80, 0.78, 0.76, 0.80, 0.78, 0.78,
-            0.73, 0.77, 0.79, 0.76, 0.76, 0.76,
+            0.73, 0.77, 0.79, 0.76, 0.76, 0.76, 0.65,
             0.67, 0.66, 0.69, 0.69, 0.71, 0.69,
             0.73, 0.78, 0.71, 0.70, 0.73, 0.74
         ],
 
         "Love": [
-            0.88, 0.82, 0.85, 0.90,
+            0.88, 0.82, 0.85, 0.90, 0.84,
             0.73, 0.76, 0.74, 0.79, 0.75, 0.76,
-            0.53, 0.76, 0.79, 0.79, 0.77, 0.77,
+            0.53, 0.76, 0.79, 0.79, 0.77, 0.77, 0.57,
             0.04, 0.42, 0.39, 0.46, 0.66, 0.56,
             0.55, 0.72, 0.48, 0.56, 0.68, 0.65
         ],
 
         "Sadness": [
-            0.68, 0.69, 0.74, 0.81,
+            0.68, 0.69, 0.74, 0.81, 0.79,
             0.59, 0.60, 0.60, 0.62, 0.62, 0.62,
-            0.61, 0.61, 0.50, 0.57, 0.61, 0.57,
+            0.61, 0.61, 0.50, 0.57, 0.61, 0.57, 0.59,
             0.60, 0.54, 0.56, 0.53, 0.55, 0.54,
             0.61, 0.63, 0.62, 0.64, 0.60, 0.59
         ],
 
         "F1 Score Macro Avg": [
-            0.77, 0.70, 0.73, 0.84,
+            0.77, 0.70, 0.73, 0.84, 0.81,
             0.55, 0.58, 0.58, 0.60, 0.58, 0.60,
-            0.50, 0.60, 0.63, 0.62, 0.63, 0.64,
+            0.50, 0.60, 0.63, 0.62, 0.63, 0.64, 0.54,
             0.39, 0.47, 0.50, 0.53, 0.55, 0.53,
             0.50, 0.59, 0.52, 0.54, 0.54, 0.53
         ]
@@ -721,26 +718,18 @@ def predict_multiple_page():
                     sample_reviews=formatted_samples
                 )
 
-                # Siapkan struktur pesan
-                messages = [
-                    types.Content(role="user", parts=[types.Part(text=user_prompt)])
-                ]
-
-                config = types.GenerateContentConfig(
-                    system_instruction=system_prompt
-                )
-
                 # ==== Generate Insight menggunakan Gemini 2.5 Flash ====
                 try:
-                    with st.spinner("⏳ Gemini sedang menganalisis konteks berdasarkan kata dan sample review..."):  
-                        time.sleep(15)
-                        response = client.models.generate_content(
+                    with st.spinner("⏳ GPT sedang menganalisis konteks berdasarkan kata dan sample review..."):
+                        response = client.chat.completions.create(
                             model=model_name,
-                            contents=messages,
-                            config=config
+                            messages=[
+                                {"role": "system", "content": system_prompt},
+                                {"role": "user", "content": user_prompt}
+                            ],
                         )
 
-                    assistant_response_string = response.text.strip()
+                    assistant_response_string = response.choices[0].message.content.strip()
                     
                     # Warna background sesuai label
                     bg_color = COLOR_MAP.get(label, "#C0C0C0")
