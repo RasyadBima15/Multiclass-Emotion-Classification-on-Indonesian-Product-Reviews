@@ -394,6 +394,11 @@ def model_analysis_page():
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss distilbert.png", caption="Loss & F1-Score per Epoch - DistilBERT")
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/loss mbert.png", caption="Loss & F1-Score per Epoch - mBERT")
 
+    st.divider()
+
+    st.subheader("📉 Grafik Loss Fine-Tuning GPT")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/fine tuning gpt loss.png", caption="Loss per Epoch - Fine-Tuned GPT-4.1 nano")
+
     # ===== BEST MODEL SUMMARY =====
     st.markdown("---")
     st.subheader("🏆 Best Model Summary")
@@ -401,17 +406,17 @@ def model_analysis_page():
     st.markdown("""
     #### **🔥 Model Terbaik: IndoBERT**
     Berdasarkan perbandingan keseluruhan metrik efektivitas, **Model IndoBERT menjadi model terbaik** dengan hasil:
-    - **F1-Score: 0.75**
-    - **Akurasi: 0.75**
+    - **F1-Score: 0.84**
+    - **Akurasi: 0.84**
 
-    Disusul oleh **DistilBERT** pada peringkat kedua dengan hasil:
-    - **F1-Score: 0.72**
-    - **Akurasi: 0.72**
+    Disusul oleh **Fine-Tuned GPT-4.1 nano** pada peringkat kedua dengan hasil:
+    - **F1-Score: 0.81**
+    - **Akurasi: 0.81**
 
-    Meskipun berada di posisi kedua secara efektivitas, **DistilBERT unggul dalam aspek efisiensi** (latensi lebih rendah & throughput lebih tinggi). 
-    Namun, **selisih efisiensinya tidak terlalu jauh dibandingkan IndoBERT**, sehingga keduanya tetap kompetitif untuk penggunaan skala besar.
+    **DistilBERT** unggul dalam aspek efisiensi (latensi lebih rendah & throughput lebih tinggi). 
+    Namun, selisih efisiensinya tidak terlalu jauh dibandingkan **IndoBERT**, sehingga keduanya tetap kompetitif untuk penggunaan skala besar.
 
-    #### 🤖 Performa Model Generative AI
+    #### 🤖 Performa Model Generative AI (Prompt-Based)
     Model Generative AI menunjukkan performa yang jauh di bawah model Fine-Tuning BERT.
     Model terbaik pada kelompok ini adalah:
 
@@ -419,7 +424,7 @@ def model_analysis_page():
       **F1-Score: 0.64**  
       **Akurasi: 0.64**
 
-    Selisih performanya relatif besar dibanding model fine-tuning BERT, sehingga untuk kasus ini **metode fine-tuning jauh lebih unggul**.
+    Selisih performanya relatif besar dibanding model fine-tuning BERT, sehingga untuk kasus ini **metode fine-tuning khususnya model IndoBERT jauh lebih unggul**.
     """)
 
 def predict_single_page():
