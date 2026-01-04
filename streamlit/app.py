@@ -151,6 +151,7 @@ def home_page():
     ### 🧪 **Model yang Dibandingkan**
     **Generative AI**
     - GPT-5.1  
+    - GPT-4.1 nano
     - Gemini 2.5 Flash  
     - Gemma-3 (12B)  
     - LLaMA-3.1 (8B)
@@ -189,7 +190,7 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan Presisi per Label")
     precision_data = {
         "Model": [
-            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)"
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
