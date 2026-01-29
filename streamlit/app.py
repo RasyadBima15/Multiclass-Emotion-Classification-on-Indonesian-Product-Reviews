@@ -905,17 +905,17 @@ def predict_multiple_page():
                     <div class="main-card" style="border-left: 8px solid #22C55E;">
                         <div class="card-title" style="color: #065F46;">🧑‍💻 Rekomendasi untuk Pembeli</div>
                         
-                        <div class="content-label">📦 Kategori Produk</div>
-                        <div class="content-text">{buyer["product_category"]}</div>
+                        📦 Kategori Produk
+                        {buyer["product_category"]}
                         
-                        <div class="content-label">💡 Alasan Utama</div>
-                        <div class="content-text">{buyer["reason"]}</div>
+                        💡 Alasan Utama
+                        {buyer["reason"]}
                         
-                        <div class="content-label">✅ Tips Memilih</div>
-                        <div class="content-text">{buyer["tips"]}</div>
+                        ✅ Tips Memilih
+                        {buyer["tips"]}
                         
-                        <div class="content-label">⚠️ Hal yang Perlu Diwaspadai</div>
-                        <div class="content-text">{buyer["warning"]}</div>
+                        ⚠️ Hal yang Perlu Diwaspadai
+                        {buyer["warning"]}
                     </div>
                     """)
 
@@ -925,18 +925,21 @@ def predict_multiple_page():
                     <div class="main-card" style="border-left: 8px solid #4F46E5;">
                         <div class="card-title" style="color: #1E3A8A;">🏪 Rekomendasi untuk Penjual</div>
                         
-                        <div class="content-label">🎯 Fokus Produk</div>
-                        <div class="content-text">{seller["product_focus"]}</div>
+                        🎯 Fokus Produk
+                        {seller["product_focus"]}
                         
-                        <div class="content-label">🚨 Masalah Utama</div>
-                        <div class="content-text">{seller["main_issue"]}</div>
+                        🚨 Masalah Utama
+                        {seller["main_issue"]}
                         
-                        <div class="content-label">🔧 Strategi Peningkatan</div>
-                        <div class="content-text">{seller["improvement_strategy"]}</div>
+                        🚨 Masalah Utama
+                        {seller["main_issue"]}
                         
-                        <div class="content-label">📈 Strategi Tambahan</div>
-                        <div class="content-text">{seller["additional_strategy"]}</div>
-                    </div>
+                        🔧 Strategi Peningkatan
+                        {seller["improvement_strategy"]}
+                        
+                        📈 Strategi Tambahan
+                        {seller["additional_strategy"]}
+                    
                     """)
 
             except Exception as e:
