@@ -931,9 +931,6 @@ def predict_multiple_page():
                         🚨 Masalah Utama
                         {seller["main_issue"]}
                         
-                        🚨 Masalah Utama
-                        {seller["main_issue"]}
-                        
                         🔧 Strategi Peningkatan
                         {seller["improvement_strategy"]}
                         
