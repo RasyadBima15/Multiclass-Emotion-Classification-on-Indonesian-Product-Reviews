@@ -535,7 +535,7 @@ def predict_multiple_page():
             if uploaded_file.name.endswith(".csv"):
                 df = pd.read_csv(uploaded_file)
             else:
-                df = pd.read_excel(uploaded_file)
+                df = pd.read_excel(uploaded_file, engine="openpyxl")
         except:
             st.error("❌ Gagal membaca file, pastikan format benar.")
             return
