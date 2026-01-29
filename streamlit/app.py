@@ -14,6 +14,7 @@ import torch.nn.functional as F
 import numpy as np
 from openai import OpenAI
 import os
+import json
 
 model_path = "Rasyy/indobert_multiclass_emotion_classifier_for_indonesian_e_commerce_reviews"  # Pastikan path ini benar
 MAX_LENGTH = 256
@@ -842,6 +843,24 @@ def predict_multiple_page():
             - Masalah utama yang sering dikeluhkan:
             - Strategi peningkatan produk:
             - Strategi tambahan (layanan, komunikasi, harga):
+
+            FORMAT OUTPUT (WAJIB JSON):
+
+            {
+                "buyer": {
+                    "product_category": "",
+                    "reason": "",
+                    "tips": "",
+                    "warning": ""
+                },
+                "seller": {
+                    "product_focus": "",
+                    "main_issue": "",
+                    "improvement_strategy": "",
+                    "additional_strategy": ""
+                }
+            }
+
             """
 
             try:
@@ -856,37 +875,62 @@ def predict_multiple_page():
 
                 recommendation_text = response.choices[0].message.content.strip()
 
-                st.markdown(
-                    f"""
-                    <div style="
-                        background-color:#F8FAFC;
-                        padding:24px 28px;
-                        border-radius:18px;
-                        border-left:8px solid #4F46E5;
-                        font-size:16px;
-                        line-height:1.8;
-                        color:#111827;
-                    ">
-                        {recommendation_text
-                            .replace('**', '<b>')
-                            .replace(
-                                '### 🏪 Rekomendasi untuk Penjual',
-                                '<h4 style="margin-top:0; margin-bottom:14px; color:#1F2937;">🏪 Rekomendasi untuk Penjual</h4>'
-                            )
-                            .replace(
-                                '### 🧑‍💻 Rekomendasi untuk Pembeli',
-                                '<h4 style="margin-top:28px; margin-bottom:14px; color:#1F2937;">🧑‍💻 Rekomendasi untuk Pembeli</h4>'
-                            )
-                            .replace(
-                                '• ',
-                                '<div style="margin-bottom:14px;">• '
-                            )
-                            + '</div>'
-                        }
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                ai_data = json.loads(recommendation_text)
+
+                buyer = ai_data["buyer"]
+                seller = ai_data["seller"]
+
+                col1, col2 = st.columns(2)
+
+                # ===== BUYER CARD =====
+                with col1:
+                    st.markdown(
+                        f"""
+                        <div style="
+                            background:#FFFFFF;
+                            padding:22px 24px;
+                            border-radius:20px;
+                            box-shadow:0 8px 24px rgba(0,0,0,0.06);
+                            border-top:6px solid #22C55E;
+                        ">
+                            <h4 style="margin-top:0; color:#065F46;">🧑‍💻 Rekomendasi untuk Pembeli</h4>
+
+                            <p><b>📦 Kategori Produk</b><br>{buyer["product_category"]}</p>
+
+                            <p><b>💡 Alasan Utama</b><br>{buyer["reason"]}</p>
+
+                            <p><b>✅ Tips Memilih</b><br>{buyer["tips"]}</p>
+
+                            <p><b>⚠️ Hal yang Perlu Diwaspadai</b><br>{buyer["warning"]}</p>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                # ===== SELLER CARD =====
+                with col2:
+                    st.markdown(
+                        f"""
+                        <div style="
+                            background:#FFFFFF;
+                            padding:22px 24px;
+                            border-radius:20px;
+                            box-shadow:0 8px 24px rgba(0,0,0,0.06);
+                            border-top:6px solid #4F46E5;
+                        ">
+                            <h4 style="margin-top:0; color:#1E3A8A;">🏪 Rekomendasi untuk Penjual</h4>
+
+                            <p><b>🎯 Fokus Produk</b><br>{seller["product_focus"]}</p>
+
+                            <p><b>🚨 Masalah Utama</b><br>{seller["main_issue"]}</p>
+
+                            <p><b>🔧 Strategi Peningkatan</b><br>{seller["improvement_strategy"]}</p>
+
+                            <p><b>📈 Strategi Tambahan</b><br>{seller["additional_strategy"]}</p>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
             except Exception as e:
                 st.error(f"❌ Gagal menghasilkan rekomendasi produk: {e}")
