@@ -151,7 +151,6 @@ def home_page():
     ### 🧪 **Model yang Dibandingkan**
     **Generative AI**
     - GPT-5.1  
-    - GPT-4.1 nano
     - Gemini 2.5 Flash  
     - Gemma-3 (12B)  
     - LLaMA-3.1 (8B)
@@ -190,11 +189,11 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan Presisi per Label")
     precision_data = {
         "Model": [
-            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
-            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)", "GPT-4.1 nano (25-shot)",
+            "GPT-5.1 (20-shot)", "GPT-5.1 (25-shot)",
             "Llama3.1-8B (0-shot)", "Llama3.1-8B (5-shot)", "Llama3.1-8B (10-shot)", "Llama3.1-8B (15-shot)",
             "Llama3.1-8B (20-shot)", "Llama3.1-8B (25-shot)",
             "Gemma3-12B (0-shot)", "Gemma3-12B (5-shot)", "Gemma3-12B (10-shot)", "Gemma3-12B (15-shot)",
@@ -202,17 +201,17 @@ def model_analysis_page():
         ],
 
         # LABEL SCORES
-        "Anger":   [0.72, 0.71, 0.71, 0.75, 0.87, 0.54, 0.60, 0.57, 0.63, 0.62, 0.72, 0.60, 0.59, 0.62, 0.60, 0.64, 0.70, 0.71, 0.56, 0.50, 0.56, 0.59, 0.53, 0.62, 0.53, 0.69, 0.67, 0.64, 0.64, 0.66],
-        "Fear":    [0.61, 0.55, 0.59, 0.80, 0.89, 0.00, 0.40, 0.67, 0.67, 0.50, 0.67, 1.00, 0.50, 0.49, 0.45, 0.48, 0.49, 0.00, 0.00, 0.30, 0.36, 0.43, 0.40, 0.31, 0.00, 0.50, 0.43, 0.50, 0.33, 0.33],
-        "Happy":   [0.84, 0.74, 0.80, 0.84, 0.83, 0.71, 0.73, 0.72, 0.77, 0.73, 0.74, 0.60, 0.73, 0.76, 0.77, 0.74, 0.74, 0.61, 0.51, 0.55, 0.56, 0.57, 0.67, 0.61, 0.62, 0.72, 0.59, 0.62, 0.68, 0.65],
-        "Love":    [0.93, 0.84, 0.86, 0.97, 0.86, 0.93, 0.88, 0.83, 0.85, 0.86, 0.84, 0.89, 0.82, 0.85, 0.80, 0.80, 0.80, 0.64, 1.00, 0.67, 0.71, 0.75, 0.73, 0.70, 0.86, 0.85, 0.88, 0.77, 0.81, 0.88],
-        "Sadness": [0.79, 0.71, 0.67, 0.87, 0.69, 0.49, 0.47, 0.47, 0.48, 0.48, 0.46, 0.46, 0.50, 0.47, 0.52, 0.52, 0.50, 0.43, 0.47, 0.51, 0.51, 0.48, 0.49, 0.45, 0.48, 0.47, 0.47, 0.49, 0.44, 0.43],
+        "Anger":   [0.72, 0.71, 0.71, 0.75, 0.54, 0.60, 0.57, 0.63, 0.62, 0.72, 0.60, 0.59, 0.62, 0.60, 0.64, 0.70, 0.56, 0.50, 0.56, 0.59, 0.53, 0.62, 0.53, 0.69, 0.67, 0.64, 0.64, 0.66],
+        "Fear":    [0.61, 0.55, 0.59, 0.80, 0.00, 0.40, 0.67, 0.67, 0.50, 0.67, 1.00, 0.50, 0.49, 0.45, 0.48, 0.49, 0.00, 0.30, 0.36, 0.43, 0.40, 0.31, 0.00, 0.50, 0.43, 0.50, 0.33, 0.33],
+        "Happy":   [0.84, 0.74, 0.80, 0.84, 0.71, 0.73, 0.72, 0.77, 0.73, 0.74, 0.60, 0.73, 0.76, 0.77, 0.74, 0.74, 0.51, 0.55, 0.56, 0.57, 0.67, 0.61, 0.62, 0.72, 0.59, 0.62, 0.68, 0.65],
+        "Love":    [0.93, 0.84, 0.86, 0.97, 0.93, 0.88, 0.83, 0.85, 0.86, 0.84, 0.89, 0.82, 0.85, 0.80, 0.80, 0.80, 1.00, 0.67, 0.71, 0.75, 0.73, 0.70, 0.86, 0.85, 0.88, 0.77, 0.81, 0.88],
+        "Sadness": [0.79, 0.71, 0.67, 0.87, 0.49, 0.47, 0.47, 0.48, 0.48, 0.46, 0.46, 0.50, 0.47, 0.52, 0.52, 0.50, 0.47, 0.51, 0.51, 0.48, 0.49, 0.45, 0.48, 0.47, 0.47, 0.49, 0.44, 0.43],
 
         # MACRO AVG
         "Precision Macro Avg": [
-            0.78, 0.71, 0.73, 0.85, 0.83, 
+            0.78, 0.71, 0.73, 0.85,
             0.53, 0.62, 0.65, 0.68, 0.64, 0.68,
-            0.71, 0.63, 0.64, 0.63, 0.64, 0.65, 0.48,
+            0.71, 0.63, 0.64, 0.63, 0.64, 0.65,
             0.51, 0.51, 0.54, 0.57, 0.56, 0.54,
             0.50, 0.65, 0.61, 0.60, 0.58, 0.59
         ]
@@ -227,7 +226,7 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan Recall per Label")
     recall_data = {
         "Model": [
-            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
@@ -239,49 +238,49 @@ def model_analysis_page():
         ],
 
         "Anger": [
-            0.69, 0.49, 0.56, 0.87, 0.73,
+            0.69, 0.49, 0.56, 0.87,
             0.80, 0.73, 0.69, 0.71, 0.69, 0.62,
-            0.60, 0.67, 0.64, 0.67, 0.62, 0.62, 0.53,
+            0.60, 0.67, 0.64, 0.67, 0.62, 0.62,
             0.80, 0.84, 0.84, 0.76, 0.71, 0.73,
             0.69, 0.64, 0.64, 0.67, 0.56, 0.51
         ],
 
         "Fear": [
-            0.78, 0.69, 0.53, 0.78, 0.71,
+            0.78, 0.69, 0.53, 0.78,
             0.00, 0.04, 0.09, 0.09, 0.04, 0.09,
-            0.02, 0.18, 0.42, 0.31, 0.31, 0.40, 0.00,
+            0.02, 0.18, 0.42, 0.31, 0.31, 0.40,
             0.00, 0.07, 0.11, 0.22, 0.18, 0.11,
             0.00, 0.09, 0.07, 0.09, 0.04, 0.04
         ],
 
         "Happy": [
-            0.93, 0.87, 0.89, 0.96, 0.87,
+            0.93, 0.87, 0.89, 0.96,
             0.91, 0.84, 0.80, 0.82, 0.84, 0.82,
-            0.91, 0.80, 0.82, 0.76, 0.78, 0.78, 0.69,
+            0.91, 0.80, 0.82, 0.76, 0.78, 0.78,
             0.96, 0.82, 0.89, 0.87, 0.76, 0.78,
             0.89, 0.84, 0.91, 0.82, 0.80, 0.87
         ],
 
         "Love": [
-            0.84, 0.80, 0.84, 0.84, 0.82,
+            0.84, 0.80, 0.84, 0.84,
             0.60, 0.67, 0.67, 0.73, 0.67, 0.69,
-            0.38, 0.71, 0.73, 0.78, 0.73, 0.73, 0.51,
+            0.38, 0.71, 0.73, 0.78, 0.73, 0.73,
             0.02, 0.31, 0.27, 0.33, 0.60, 0.47,
             0.40, 0.62, 0.33, 0.44, 0.58, 0.51
         ],
 
         "Sadness": [
-            0.60, 0.67, 0.82, 0.76, 0.93,
+            0.60, 0.67, 0.82, 0.76,
             0.76, 0.82, 0.82, 0.87, 0.89, 0.96,
-            0.93, 0.78, 0.53, 0.64, 0.73, 0.67, 0.98,
+            0.93, 0.78, 0.53, 0.64, 0.73, 0.67,
             0.80, 0.58, 0.62, 0.60, 0.62, 0.69,
             0.84, 0.93, 0.91, 0.91, 0.93, 0.93
         ],
 
         "Recall Macro Avg": [
-            0.77, 0.70, 0.73, 0.84, 0.81,
+            0.77, 0.70, 0.73, 0.84,
             0.61, 0.62, 0.61, 0.64, 0.63, 0.64,
-            0.57, 0.63, 0.63, 0.63, 0.64, 0.64, 0.54,
+            0.57, 0.63, 0.63, 0.63, 0.64, 0.64,
             0.52, 0.52, 0.55, 0.56, 0.57, 0.56,
             0.56, 0.63, 0.57, 0.59, 0.58, 0.57
         ]
@@ -296,7 +295,7 @@ def model_analysis_page():
     st.subheader("📈 Perbandingan F1 Score per Label")
     f1_data = {
         "Model": [
-            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)", "GPT-4.1 nano (Fine-tuning)",
+            "DistilBERT (Fine-tuning)", "RoBERTa (Fine-tuning)", "mBERT (Fine-tuning)", "IndoBERT (Fine-tuning)",
             "Gemini 2.5 Flash (0-shot)", "Gemini 2.5 Flash (5-shot)", "Gemini 2.5 Flash (10-shot)",
             "Gemini 2.5 Flash (15-shot)", "Gemini 2.5 Flash (20-shot)", "Gemini 2.5 Flash (25-shot)",
             "GPT-5.1 (0-shot)", "GPT-5.1 (5-shot)", "GPT-5.1 (10-shot)", "GPT-5.1 (15-shot)",
@@ -308,49 +307,49 @@ def model_analysis_page():
         ],
 
         "Anger": [
-            0.70, 0.58, 0.62, 0.80, 0.80,
+            0.70, 0.58, 0.62, 0.80,
             0.64, 0.66, 0.63, 0.67, 0.65, 0.67,
-            0.60, 0.62, 0.63, 0.63, 0.63, 0.66, 0.61,
+            0.60, 0.62, 0.63, 0.63, 0.63, 0.66,
             0.66, 0.63, 0.67, 0.66, 0.61, 0.67,
             0.60, 0.67, 0.66, 0.65, 0.60, 0.57
         ],
 
         "Fear": [
-            0.69, 0.61, 0.56, 0.79, 0.79,
+            0.69, 0.61, 0.56, 0.79,
             0.00, 0.08, 0.16, 0.16, 0.08, 0.16,
-            0.04, 0.26, 0.45, 0.37, 0.38, 0.44, 0.00,
+            0.04, 0.26, 0.45, 0.37, 0.38, 0.44,
             0.00, 0.11, 0.17, 0.29, 0.25, 0.16,
             0.00, 0.15, 0.12, 0.15, 0.08, 0.08
         ],
 
         "Happy": [
-            0.88, 0.80, 0.84, 0.90, 0.85,
+            0.88, 0.80, 0.84, 0.90,
             0.80, 0.78, 0.76, 0.80, 0.78, 0.78,
-            0.73, 0.77, 0.79, 0.76, 0.76, 0.76, 0.65,
+            0.73, 0.77, 0.79, 0.76, 0.76, 0.76,
             0.67, 0.66, 0.69, 0.69, 0.71, 0.69,
             0.73, 0.78, 0.71, 0.70, 0.73, 0.74
         ],
 
         "Love": [
-            0.88, 0.82, 0.85, 0.90, 0.84,
+            0.88, 0.82, 0.85, 0.90,
             0.73, 0.76, 0.74, 0.79, 0.75, 0.76,
-            0.53, 0.76, 0.79, 0.79, 0.77, 0.77, 0.57,
+            0.53, 0.76, 0.79, 0.79, 0.77, 0.77,
             0.04, 0.42, 0.39, 0.46, 0.66, 0.56,
             0.55, 0.72, 0.48, 0.56, 0.68, 0.65
         ],
 
         "Sadness": [
-            0.68, 0.69, 0.74, 0.81, 0.79,
+            0.68, 0.69, 0.74, 0.81,
             0.59, 0.60, 0.60, 0.62, 0.62, 0.62,
-            0.61, 0.61, 0.50, 0.57, 0.61, 0.57, 0.59,
+            0.61, 0.61, 0.50, 0.57, 0.61, 0.57,
             0.60, 0.54, 0.56, 0.53, 0.55, 0.54,
             0.61, 0.63, 0.62, 0.64, 0.60, 0.59
         ],
 
         "F1 Score Macro Avg": [
-            0.77, 0.70, 0.73, 0.84, 0.81,
+            0.77, 0.70, 0.73, 0.84,
             0.55, 0.58, 0.58, 0.60, 0.58, 0.60,
-            0.50, 0.60, 0.63, 0.62, 0.63, 0.64, 0.54,
+            0.50, 0.60, 0.63, 0.62, 0.63, 0.64,
             0.39, 0.47, 0.50, 0.53, 0.55, 0.53,
             0.50, 0.59, 0.52, 0.54, 0.54, 0.53
         ]
@@ -366,13 +365,20 @@ def model_analysis_page():
     st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by accuracy.png", caption="Model Ranking by Accuracy")
     st.divider()
 
-    st.subheader("⚡ Model Ranking by Latency")
-    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by latency.png", caption="Model Ranking by Latency")
+    st.subheader("⚡ Model Ranking by Latency through Local Inference")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/latency local.png", caption="Model Ranking by Latency (Local Inference)")
     st.divider()
 
-    st.subheader("📦 Model Ranking by Throughput")
-    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/model ranking by throughput.png", caption="Model Ranking by Throughput")
+    st.subheader("⚡ Model Ranking by Latency through API Inference")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/latency api.png", caption="Model Ranking by Latency (API Inference)")
+    st.divider()
 
+    st.subheader("📦 Model Ranking by Throughput through Local Inference")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/throughput local.png", caption="Model Ranking by Throughput (Local Inference)")
+    st.divider()
+
+    st.subheader("📦 Model Ranking by Throughput through API Inference")
+    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/throughput api.png", caption="Model Ranking by Throughput (API Inference)")
     st.divider()
 
     # ===========================
@@ -396,9 +402,6 @@ def model_analysis_page():
 
     st.divider()
 
-    st.subheader("📉 Grafik Loss Fine-Tuning GPT")
-    st.image("https://raw.githubusercontent.com/RasyadBima15/Multiclass-Emotion-Classification-on-Indonesian-Product-Reviews/main/streamlit/assets/fine tuning gpt loss.png", caption="Loss per Epoch - Fine-Tuned GPT-4.1 nano")
-
     # ===== BEST MODEL SUMMARY =====
     st.markdown("---")
     st.subheader("🏆 Best Model Summary")
@@ -406,25 +409,25 @@ def model_analysis_page():
     st.markdown("""
     #### **🔥 Model Terbaik: IndoBERT**
     Berdasarkan perbandingan keseluruhan metrik efektivitas, **Model IndoBERT menjadi model terbaik** dengan hasil:
-    - **F1-Score: 0.84**
-    - **Akurasi: 0.84**
+    - **F1-Score: 0.75**
+    - **Akurasi: 0.75**
 
-    Disusul oleh **Fine-Tuned GPT-4.1 nano** pada peringkat kedua dengan hasil:
-    - **F1-Score: 0.81**
-    - **Akurasi: 0.81**
+    Disusul oleh **DistilBERT** pada peringkat kedua dengan hasil:
+    - **F1-Score: 0.72**
+    - **Akurasi: 0.72**
 
-    **DistilBERT** unggul dalam aspek efisiensi (latensi lebih rendah & throughput lebih tinggi). 
-    Namun, selisih efisiensinya tidak terlalu jauh dibandingkan **IndoBERT**, sehingga keduanya tetap kompetitif untuk penggunaan skala besar.
+    Meskipun berada di posisi kedua secara efektivitas, **DistilBERT unggul dalam aspek efisiensi** (latensi lebih rendah & throughput lebih tinggi). 
+    Namun, **selisih efisiensinya tidak terlalu jauh dibandingkan IndoBERT**, sehingga keduanya tetap kompetitif untuk penggunaan skala besar.
 
-    #### 🤖 Performa Model Generative AI (Prompt-Based)
-    Model Generative AI menunjukkan performa yang jauh di bawah model Fine-Tuning BERT.
+    #### 🤖 Performa Model Generative AI
+    Model Generative AI menunjukkan performa yang belum mampu menandingi performa model Fine-Tuning BERT.
     Model terbaik pada kelompok ini adalah:
 
     - **GPT-5.1 (25-shot)**  
       **F1-Score: 0.64**  
       **Akurasi: 0.64**
 
-    Selisih performanya relatif besar dibanding model fine-tuning BERT, sehingga untuk kasus ini **metode fine-tuning khususnya model IndoBERT jauh lebih unggul**.
+    Selisih performanya relatif besar dibanding model fine-tuning BERT, sehingga untuk kasus ini **metode fine-tuning model berbasis BERT jauh lebih unggul**.
     """)
 
 def predict_single_page():
