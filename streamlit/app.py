@@ -667,17 +667,28 @@ def predict_multiple_page():
                     f"""
                     <div style="
                         background-color:#F8FAFC;
-                        padding:22px 26px;
+                        padding:24px 28px;
                         border-radius:18px;
                         border-left:8px solid #4F46E5;
                         font-size:16px;
                         line-height:1.8;
+                        color:#111827;
                     ">
                         {recommendation_text
                             .replace('**', '<b>')
-                            .replace('### 🏪 Rekomendasi untuk Penjual', '<h4>🏪 Rekomendasi untuk Penjual</h4>')
-                            .replace('### 🧑‍💻 Rekomendasi untuk Pembeli', '<h4 style="margin-top:20px;">🧑‍💻 Rekomendasi untuk Pembeli</h4>')
-                            .replace('- ', '• ')
+                            .replace(
+                                '### 🏪 Rekomendasi untuk Penjual',
+                                '<h4 style="margin-top:0; margin-bottom:14px; color:#1F2937;">🏪 Rekomendasi untuk Penjual</h4>'
+                            )
+                            .replace(
+                                '### 🧑‍💻 Rekomendasi untuk Pembeli',
+                                '<h4 style="margin-top:28px; margin-bottom:14px; color:#1F2937;">🧑‍💻 Rekomendasi untuk Pembeli</h4>'
+                            )
+                            .replace(
+                                '• ',
+                                '<div style="margin-bottom:14px;">• '
+                            )
+                            + '</div>'
                         }
                     </div>
                     """,
