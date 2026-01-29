@@ -908,7 +908,7 @@ def predict_multiple_page():
                         📦 Kategori Produk
                         {buyer["product_category"]}
                         
-                        💡 Alasan Utama
+                        💬 Intisari Ulasan
                         {buyer["reason"]}
                         
                         ✅ Tips Memilih
