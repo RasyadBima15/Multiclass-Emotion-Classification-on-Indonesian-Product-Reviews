@@ -806,7 +806,7 @@ def predict_multiple_page():
             top_words_global = Counter(words).most_common(15)
             keyword_text = "\n".join([f"- {w}: {c}" for w, c in top_words_global])
 
-            recommendation_prompt = """
+            recommendation_prompt = f"""
             Berikut adalah hasil analisis ulasan pelanggan e-commerce Indonesia.
 
             Distribusi emosi pelanggan:
@@ -823,25 +823,21 @@ def predict_multiple_page():
             2. Berikan rekomendasi spesifik untuk buyer dan seller.
 
             FORMAT OUTPUT (WAJIB JSON):
-            {
-            "buyer": {
+            {{
+            "buyer": {{
                 "product_category": "",
                 "reason": "",
                 "tips": "",
                 "warning": ""
-            },
-            "seller": {
+            }},
+            "seller": {{
                 "product_focus": "",
                 "main_issue": "",
                 "improvement_strategy": "",
                 "additional_strategy": ""
-            }
-            }
-            """.format(
-                emotion_summary=emotion_summary,
-                keyword_text=keyword_text,
-                formatted_samples_all=formatted_samples_all
-            )
+            }}
+            }}
+            """
 
             try:
                 with st.spinner("🤖 AI sedang menyusun rekomendasi produk berdasarkan emosi pelanggan..."):
