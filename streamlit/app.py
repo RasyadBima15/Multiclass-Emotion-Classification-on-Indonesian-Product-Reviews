@@ -597,108 +597,6 @@ def predict_multiple_page():
 
             df_analysis = df[df["Emotion"].notna()].copy()
 
-            # ===== Rekomendasi Produk Berbasis Emosi =====
-            st.subheader("🛍️ Rekomendasi Produk & Strategi Penjualan (AI)")
-
-            # Distribusi emosi
-            emotion_dist = df_analysis["Emotion"].value_counts(normalize=True) * 100
-            emotion_summary = "\n".join(
-                [f"- {label}: {value:.1f}%" for label, value in emotion_dist.items()]
-            )
-
-            # Top kata global
-            all_text = " ".join(df_analysis["Customer Review"].values).lower()
-            words = re.findall(r'\w+', all_text)
-            top_words_global = Counter(words).most_common(15)
-            formatted_top_words = "\n".join([f"- {w}: {c}" for w, c in top_words_global])
-
-            recommendation_prompt = f"""
-            Berikut adalah hasil analisis ulasan pelanggan e-commerce Indonesia.
-
-            Distribusi emosi pelanggan:
-            {emotion_summary}
-
-            Top kata yang sering muncul dalam ulasan:
-            {formatted_top_words}
-
-            Berdasarkan data tersebut, lakukan analisis dan berikan rekomendasi TERPISAH untuk:
-
-            A. PENJUAL (Seller)
-            - Ringkasan kondisi pasar & persepsi pelanggan
-            - Rekomendasi jenis produk yang perlu ditingkatkan/dijual
-            - Strategi penjualan (promo, bundling, harga, positioning)
-            - Cara mitigasi jika emosi negatif dominan
-
-            B. PEMBELI (Buyer)
-            - Ringkasan kondisi pengalaman pelanggan
-            - Rekomendasi tindakan sebelum membeli
-            - Tips memilih produk yang tepat
-            - Hal-hal yang perlu diwaspadai dari ulasan negatif
-
-            Gunakan bahasa profesional, ringkas, dan aplikatif.
-            Format jawaban WAJIB:
-
-            ### 🏪 Rekomendasi untuk Penjual
-            - Ringkasan kondisi:
-            - Rekomendasi produk:
-            - Strategi penjualan:
-            - Mitigasi risiko:
-
-            ### 🧑‍💻 Rekomendasi untuk Pembeli
-            - Gambaran umum pengalaman pelanggan:
-            - Saran sebelum membeli:
-            - Tips memilih produk:
-            - Peringatan penting:
-            """
-
-            try:
-                with st.spinner("🤖 AI sedang menyusun rekomendasi produk berdasarkan emosi pelanggan..."):
-                    response = client.chat.completions.create(
-                        model=model_name,
-                        messages=[
-                            {"role": "system", "content": system_prompt},
-                            {"role": "user", "content": recommendation_prompt}
-                        ],
-                    )
-
-                recommendation_text = response.choices[0].message.content.strip()
-
-                st.markdown(
-                    f"""
-                    <div style="
-                        background-color:#F8FAFC;
-                        padding:24px 28px;
-                        border-radius:18px;
-                        border-left:8px solid #4F46E5;
-                        font-size:16px;
-                        line-height:1.8;
-                        color:#111827;
-                    ">
-                        {recommendation_text
-                            .replace('**', '<b>')
-                            .replace(
-                                '### 🏪 Rekomendasi untuk Penjual',
-                                '<h4 style="margin-top:0; margin-bottom:14px; color:#1F2937;">🏪 Rekomendasi untuk Penjual</h4>'
-                            )
-                            .replace(
-                                '### 🧑‍💻 Rekomendasi untuk Pembeli',
-                                '<h4 style="margin-top:28px; margin-bottom:14px; color:#1F2937;">🧑‍💻 Rekomendasi untuk Pembeli</h4>'
-                            )
-                            .replace(
-                                '• ',
-                                '<div style="margin-bottom:14px;">• '
-                            )
-                            + '</div>'
-                        }
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-            except Exception as e:
-                st.error(f"❌ Gagal menghasilkan rekomendasi produk: {e}")
-
-
             st.subheader("📊 Distribusi Label Emosi")
 
             label_counts = df_analysis["Emotion"].value_counts()
@@ -879,6 +777,119 @@ def predict_multiple_page():
 
                 except Exception as e:
                     st.error(f"❌ Gagal menghasilkan insight Gemini: {e}")
+
+            all_samples = []
+
+            for label in df_analysis["Emotion"].unique():
+                subset = df_analysis[df_analysis["Emotion"] == label]
+                samples = subset["Customer Review"].head(5).tolist()
+                all_samples.extend(samples)
+
+            # Maksimal 25 sample
+            all_samples = all_samples[:25]
+
+            formatted_samples_all = "\n".join([f"- {s}" for s in all_samples])
+
+            # ===== Rekomendasi Produk Berbasis Emosi =====
+            st.subheader("🛍️ Rekomendasi Produk & Strategi Penjualan (AI)")
+
+            # Distribusi emosi (global)
+            emotion_dist = df_analysis["Emotion"].value_counts(normalize=True) * 100
+            emotion_summary = "\n".join(
+                [f"- {label}: {value:.1f}%" for label, value in emotion_dist.items()]
+            )
+
+            # Top keyword global
+            all_text = " ".join(df_analysis["Customer Review"].values).lower()
+            words = re.findall(r'\w+', all_text)
+            top_words_global = Counter(words).most_common(15)
+            keyword_text = "\n".join([f"- {w}: {c}" for w, c in top_words_global])
+
+            recommendation_prompt = f"""
+            Berikut adalah hasil analisis ulasan pelanggan e-commerce Indonesia.
+            Data hanya terdiri dari teks ulasan pelanggan (tanpa kolom nama produk).
+
+            Distribusi emosi pelanggan:
+            {emotion_summary}
+
+            Kata kunci yang paling sering muncul:
+            {keyword_text}
+
+            Contoh ulasan pelanggan (lintas emosi, representatif):
+            {formatted_samples_all}
+
+            TUGAS ANDA:
+            1. Identifikasi kategori atau jenis produk utama yang dibahas pelanggan
+            (misalnya: elektronik, fashion, produk rumah tangga, dll).
+            2. Jelaskan indikasi kata/frasa yang mendukung identifikasi produk tersebut.
+            3. Berikan rekomendasi yang SPESIFIK dan KONKRET untuk buyer dan seller.
+
+            ATURAN:
+            - Jangan mengarang produk yang tidak tersirat di ulasan.
+            - Jika produk tidak eksplisit, simpulkan berdasarkan konteks kata dan kalimat.
+            - Fokus pada produk dan atribut produk (kualitas, fungsi, layanan).
+
+            FORMAT WAJIB:
+
+            ### 🧑‍💻 Rekomendasi untuk Pembeli
+            - Kategori / jenis produk yang direkomendasikan:
+            - Alasan utama (berdasarkan emosi & ulasan):
+            - Tips memilih produk:
+            - Hal yang perlu diwaspadai:
+
+            ### 🏪 Rekomendasi untuk Penjual
+            - Kategori / aspek produk yang perlu ditingkatkan:
+            - Masalah utama yang sering dikeluhkan:
+            - Strategi peningkatan produk:
+            - Strategi tambahan (layanan, komunikasi, harga):
+            """
+
+            try:
+                with st.spinner("🤖 AI sedang menyusun rekomendasi produk berdasarkan emosi pelanggan..."):
+                    response = client.chat.completions.create(
+                        model=model_name,
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": recommendation_prompt}
+                        ],
+                    )
+
+                recommendation_text = response.choices[0].message.content.strip()
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        background-color:#F8FAFC;
+                        padding:24px 28px;
+                        border-radius:18px;
+                        border-left:8px solid #4F46E5;
+                        font-size:16px;
+                        line-height:1.8;
+                        color:#111827;
+                    ">
+                        {recommendation_text
+                            .replace('**', '<b>')
+                            .replace(
+                                '### 🏪 Rekomendasi untuk Penjual',
+                                '<h4 style="margin-top:0; margin-bottom:14px; color:#1F2937;">🏪 Rekomendasi untuk Penjual</h4>'
+                            )
+                            .replace(
+                                '### 🧑‍💻 Rekomendasi untuk Pembeli',
+                                '<h4 style="margin-top:28px; margin-bottom:14px; color:#1F2937;">🧑‍💻 Rekomendasi untuk Pembeli</h4>'
+                            )
+                            .replace(
+                                '• ',
+                                '<div style="margin-bottom:14px;">• '
+                            )
+                            + '</div>'
+                        }
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+            except Exception as e:
+                st.error(f"❌ Gagal menghasilkan rekomendasi produk: {e}")
 
             # ===== Download CSV =====
             st.subheader("📥 Download Hasil Prediksi")
