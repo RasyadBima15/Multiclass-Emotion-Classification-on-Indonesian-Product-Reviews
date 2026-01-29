@@ -851,10 +851,14 @@ def predict_multiple_page():
 
                 recommendation_text = response.choices[0].message.content.strip()
 
-                ai_data = json.loads(recommendation_text)
+                match = re.search(r"\{.*\}", recommendation_text, re.DOTALL)
+                if match:
+                    result = json.loads(match.group())
+                else:
+                    st.error("AI tidak mengembalikan JSON valid")
 
-                buyer = ai_data["buyer"]
-                seller = ai_data["seller"]
+                buyer = result["buyer"]
+                seller = result["seller"]
 
                 col1, col2 = st.columns(2)
 
