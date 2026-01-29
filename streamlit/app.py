@@ -860,57 +860,84 @@ def predict_multiple_page():
                 buyer = result["buyer"]
                 seller = result["seller"]
 
-                col1, col2 = st.columns(2)
+                # ===== CSS CUSTOM (Opsional untuk mempercantik) =====
+                st.markdown("""
+                    <style>
+                    .main-card {
+                        background: #FFFFFF;
+                        padding: 24px;
+                        border-radius: 16px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                        margin-bottom: 24px;
+                        border: 1px solid #E5E7EB;
+                    }
+                    .card-title {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        margin-bottom: 15px;
+                    }
+                    .content-label {
+                        color: #6B7280;
+                        font-size: 0.85rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.025em;
+                        margin-bottom: 2px;
+                        font-weight: 600;
+                    }
+                    .content-text {
+                        color: #1F2937;
+                        margin-bottom: 12px;
+                        line-height: 1.5;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
                 # ===== BUYER CARD =====
-                with col1:
-                    st.markdown(
-                        f"""
-                        <div style="
-                            background:#FFFFFF;
-                            padding:22px 24px;
-                            border-radius:20px;
-                            box-shadow:0 8px 24px rgba(0,0,0,0.06);
-                            border-top:6px solid #22C55E;
-                        ">
-                            <h4 style="margin-top:0; color:#065F46;">🧑‍💻 Rekomendasi untuk Pembeli</h4>
-
-                            <p><b>📦 Kategori Produk</b><br>{buyer["product_category"]}</p>
-
-                            <p><b>💡 Alasan Utama</b><br>{buyer["reason"]}</p>
-
-                            <p><b>✅ Tips Memilih</b><br>{buyer["tips"]}</p>
-
-                            <p><b>⚠️ Hal yang Perlu Diwaspadai</b><br>{buyer["warning"]}</p>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                st.markdown(
+                    f"""
+                    <div class="main-card" style="border-left: 8px solid #22C55E;">
+                        <div class="card-title" style="color: #065F46;">🧑‍💻 Rekomendasi untuk Pembeli</div>
+                        
+                        <div class="content-label">📦 Kategori Produk</div>
+                        <div class="content-text">{buyer["product_category"]}</div>
+                        
+                        <div class="content-label">💡 Alasan Utama</div>
+                        <div class="content-text">{buyer["reason"]}</div>
+                        
+                        <div class="content-label">✅ Tips Memilih</div>
+                        <div class="content-text">{buyer["tips"]}</div>
+                        
+                        <div class="content-label">⚠️ Hal yang Perlu Diwaspadai</div>
+                        <div class="content-text">{buyer["warning"]}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
                 # ===== SELLER CARD =====
-                with col2:
-                    st.markdown(
-                        f"""
-                        <div style="
-                            background:#FFFFFF;
-                            padding:22px 24px;
-                            border-radius:20px;
-                            box-shadow:0 8px 24px rgba(0,0,0,0.06);
-                            border-top:6px solid #4F46E5;
-                        ">
-                            <h4 style="margin-top:0; color:#1E3A8A;">🏪 Rekomendasi untuk Penjual</h4>
-
-                            <p><b>🎯 Fokus Produk</b><br>{seller["product_focus"]}</p>
-
-                            <p><b>🚨 Masalah Utama</b><br>{seller["main_issue"]}</p>
-
-                            <p><b>🔧 Strategi Peningkatan</b><br>{seller["improvement_strategy"]}</p>
-
-                            <p><b>📈 Strategi Tambahan</b><br>{seller["additional_strategy"]}</p>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                st.markdown(
+                    f"""
+                    <div class="main-card" style="border-left: 8px solid #4F46E5;">
+                        <div class="card-title" style="color: #1E3A8A;">🏪 Rekomendasi untuk Penjual</div>
+                        
+                        <div class="content-label">🎯 Fokus Produk</div>
+                        <div class="content-text">{seller["product_focus"]}</div>
+                        
+                        <div class="content-label">🚨 Masalah Utama</div>
+                        <div class="content-text">{seller["main_issue"]}</div>
+                        
+                        <div class="content-label">🔧 Strategi Peningkatan</div>
+                        <div class="content-text">{seller["improvement_strategy"]}</div>
+                        
+                        <div class="content-label">📈 Strategi Tambahan</div>
+                        <div class="content-text">{seller["additional_strategy"]}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
             except Exception as e:
                 st.error(f"❌ Gagal menghasilkan rekomendasi produk: {e}")
