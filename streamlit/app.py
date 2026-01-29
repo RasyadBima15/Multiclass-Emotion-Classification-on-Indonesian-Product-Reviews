@@ -1,3 +1,4 @@
+import textwrap
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -860,8 +861,11 @@ def predict_multiple_page():
                 buyer = result["buyer"]
                 seller = result["seller"]
 
+                def render_html(html_content):
+                    st.markdown(textwrap.dedent(html_content), unsafe_allow_html=True)
+
                 # ===== CSS CUSTOM (Opsional untuk mempercantik) =====
-                st.markdown("""
+                render_html("""
                     <style>
                     .main-card {
                         background: #FFFFFF;
@@ -893,10 +897,10 @@ def predict_multiple_page():
                         line-height: 1.5;
                     }
                     </style>
-                    """, unsafe_allow_html=True)
+                    """)
 
                 # ===== BUYER CARD =====
-                st.markdown(
+                render_html(
                     f"""
                     <div class="main-card" style="border-left: 8px solid #22C55E;">
                         <div class="card-title" style="color: #065F46;">🧑‍💻 Rekomendasi untuk Pembeli</div>
@@ -913,12 +917,10 @@ def predict_multiple_page():
                         <div class="content-label">⚠️ Hal yang Perlu Diwaspadai</div>
                         <div class="content-text">{buyer["warning"]}</div>
                     </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                    """)
 
                 # ===== SELLER CARD =====
-                st.markdown(
+                render_html(
                     f"""
                     <div class="main-card" style="border-left: 8px solid #4F46E5;">
                         <div class="card-title" style="color: #1E3A8A;">🏪 Rekomendasi untuk Penjual</div>
@@ -935,9 +937,7 @@ def predict_multiple_page():
                         <div class="content-label">📈 Strategi Tambahan</div>
                         <div class="content-text">{seller["additional_strategy"]}</div>
                     </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                    """)
 
             except Exception as e:
                 st.error(f"❌ Gagal menghasilkan rekomendasi produk: {e}")
