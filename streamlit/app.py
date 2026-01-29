@@ -806,9 +806,8 @@ def predict_multiple_page():
             top_words_global = Counter(words).most_common(15)
             keyword_text = "\n".join([f"- {w}: {c}" for w, c in top_words_global])
 
-            recommendation_prompt = f"""
+            recommendation_prompt = """
             Berikut adalah hasil analisis ulasan pelanggan e-commerce Indonesia.
-            Data hanya terdiri dari teks ulasan pelanggan (tanpa kolom nama produk).
 
             Distribusi emosi pelanggan:
             {emotion_summary}
@@ -816,52 +815,33 @@ def predict_multiple_page():
             Kata kunci yang paling sering muncul:
             {keyword_text}
 
-            Contoh ulasan pelanggan (lintas emosi, representatif):
+            Contoh ulasan pelanggan (lintas emosi):
             {formatted_samples_all}
 
             TUGAS ANDA:
-            1. Identifikasi kategori atau jenis produk utama yang dibahas pelanggan
-            (misalnya: elektronik, fashion, produk rumah tangga, dll).
-            2. Jelaskan indikasi kata/frasa yang mendukung identifikasi produk tersebut.
-            3. Berikan rekomendasi yang SPESIFIK dan KONKRET untuk buyer dan seller.
-
-            ATURAN:
-            - Jangan mengarang produk yang tidak tersirat di ulasan.
-            - Jika produk tidak eksplisit, simpulkan berdasarkan konteks kata dan kalimat.
-            - Fokus pada produk dan atribut produk (kualitas, fungsi, layanan).
-
-            FORMAT WAJIB:
-
-            ### 🧑‍💻 Rekomendasi untuk Pembeli
-            - Kategori / jenis produk yang direkomendasikan:
-            - Alasan utama (berdasarkan emosi & ulasan):
-            - Tips memilih produk:
-            - Hal yang perlu diwaspadai:
-
-            ### 🏪 Rekomendasi untuk Penjual
-            - Kategori / aspek produk yang perlu ditingkatkan:
-            - Masalah utama yang sering dikeluhkan:
-            - Strategi peningkatan produk:
-            - Strategi tambahan (layanan, komunikasi, harga):
+            1. Identifikasi kategori atau jenis produk utama yang dibahas pelanggan.
+            2. Berikan rekomendasi spesifik untuk buyer dan seller.
 
             FORMAT OUTPUT (WAJIB JSON):
-
             {
-                "buyer": {
-                    "product_category": "",
-                    "reason": "",
-                    "tips": "",
-                    "warning": ""
-                },
-                "seller": {
-                    "product_focus": "",
-                    "main_issue": "",
-                    "improvement_strategy": "",
-                    "additional_strategy": ""
-                }
+            "buyer": {
+                "product_category": "",
+                "reason": "",
+                "tips": "",
+                "warning": ""
+            },
+            "seller": {
+                "product_focus": "",
+                "main_issue": "",
+                "improvement_strategy": "",
+                "additional_strategy": ""
             }
-
-            """
+            }
+            """.format(
+                emotion_summary=emotion_summary,
+                keyword_text=keyword_text,
+                formatted_samples_all=formatted_samples_all
+            )
 
             try:
                 with st.spinner("🤖 AI sedang menyusun rekomendasi produk berdasarkan emosi pelanggan..."):
